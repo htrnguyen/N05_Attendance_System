@@ -124,6 +124,7 @@ namespace DAL
                 CREATE TABLE IF NOT EXISTS Weeks (
                     WeekID INTEGER PRIMARY KEY AUTOINCREMENT,
                     CourseID INTEGER,
+                    GroupID INTEGER,
                     WeekNumber INTEGER NOT NULL,
                     StartDate DATE NOT NULL,
                     EndDate DATE NOT NULL,
@@ -485,14 +486,15 @@ namespace DAL
                     {
                         var row = weekData[i];
                         command.CommandText = @"
-                            INSERT INTO Weeks (CourseID, WeekNumber, StartDate, EndDate, IsAttendanceLinkCreated)
-                            VALUES (@CourseID, @WeekNumber, @StartDate, @EndDate, @IsAttendanceLinkCreated);
+                            INSERT INTO Weeks (CourseID, GroupID, WeekNumber, StartDate, EndDate, IsAttendanceLinkCreated)
+                            VALUES (@CourseID, @GroupID, @WeekNumber, @StartDate, @EndDate, @IsAttendanceLinkCreated);
                         ";
                         command.Parameters.AddWithValue("@CourseID", row[1]);
-                        command.Parameters.AddWithValue("@WeekNumber", row[2]);
-                        command.Parameters.AddWithValue("@StartDate", row[3]);
-                        command.Parameters.AddWithValue("@EndDate", row[4]);
-                        command.Parameters.AddWithValue("@IsAttendanceLinkCreated", row[5]);
+                        command.Parameters.AddWithValue("@GroupID", row[2]);
+                        command.Parameters.AddWithValue("@WeekNumber", row[3]);
+                        command.Parameters.AddWithValue("@StartDate", row[4]);
+                        command.Parameters.AddWithValue("@EndDate", row[5]);
+                        command.Parameters.AddWithValue("@IsAttendanceLinkCreated", row[6]);
 
                         await command.ExecuteNonQueryAsync();
                         command.Parameters.Clear();

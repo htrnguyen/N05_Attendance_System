@@ -162,7 +162,7 @@ namespace DAL.Repositories
             return announcements;
         }
         // Kiểm tra Giáo viên đã tạo link điểm danh chưa
-        public bool CheckAttendanceLink(int WeekID, int CourseID, int TeacherID)
+        public bool CheckAttendanceLink(int WeekID, int CourseID, int TeacherID, int ClassID)
         {
             using (var conn = new SQLiteConnection(_connectionString))
             {
@@ -184,14 +184,20 @@ namespace DAL.Repositories
                             CourseAssignments ca ON c.courseID = ca.courseID
                         JOIN 
                             Users u ON ca.teacherID = u.userID
+                        JOIN 
+                            Groups g ON w.GroupID = g.GroupID
+                        JOIN 
+                            Classes cl ON g.classID = cl.classID
                         WHERE 
-                            u.userID = @TeacherID -- ID của giáo viên
-                            AND w.weekID = @WeekID -- ID của tuần cần kiểm tra
-                            AND c.courseID = @CourseID; -- ID của khóa học cần kiểm tra
+                            u.userID = @TeacherID
+                            AND w.weekID = @WeekID
+                            AND c.courseID = @CourseID
+                            AND cl.classID = @ClassID;
                     ";
                     cmd.Parameters.AddWithValue("@WeekID", WeekID);
                     cmd.Parameters.AddWithValue("@CourseID", CourseID);
                     cmd.Parameters.AddWithValue("@TeacherID", TeacherID);
+                    cmd.Parameters.AddWithValue("@ClassID", ClassID);
                     using (var reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
@@ -200,7 +206,7 @@ namespace DAL.Repositories
                         }
                         else
                         {
-                            return false;
+                            return true;
                         }
                     }
                 }

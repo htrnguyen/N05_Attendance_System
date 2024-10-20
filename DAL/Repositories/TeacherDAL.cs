@@ -105,7 +105,7 @@ namespace DAL.Repositories
                     {
                         while (reader.Read())
                         {
-                            var week = new WeekDTO                      
+                            var week = new WeekDTO
                             {
                                 WeekID = Convert.ToInt32(reader["weekID"]),
                                 WeekNumber = Convert.ToInt32(reader["weekNumber"]),
@@ -157,7 +157,7 @@ namespace DAL.Repositories
             return announcements;
         }
         // Kiểm tra giáo viên đã tạo link điểm danh chưa
-        public bool CheckAttendanceLink(int WeekID, int CourseID, int TeacherID)
+        public bool CheckAttendanceLink(int WeekID, int CourseID, int TeacherID, int ClassID)
         {
             using (var conn = new SQLiteConnection(_connectionString))
             {
@@ -179,26 +179,121 @@ namespace DAL.Repositories
                             CourseAssignments ca ON c.courseID = ca.courseID
                         JOIN 
                             Users u ON ca.teacherID = u.userID
+                        JOIN 
+                            Groups g ON w.GroupID = g.GroupID
+                        JOIN 
+                            Classes cl ON g.classID = cl.classID
                         WHERE 
-                            u.userID = @TeacherID -- ID của giáo viên
-                            AND w.weekID = @WeekID -- ID của tuần cần kiểm tra
-                            AND c.courseID = @CourseID; -- ID của khóa học cần kiểm tra
+                            u.userID = @TeacherID
+                            AND w.weekID = @WeekID
+                            AND c.courseID = @CourseID
+                            AND cl.classID = @ClassID
                     ";
                     cmd.Parameters.AddWithValue("@WeekID", WeekID);
                     cmd.Parameters.AddWithValue("@CourseID", CourseID);
                     cmd.Parameters.AddWithValue("@TeacherID", TeacherID);
+                    cmd.Parameters.AddWithValue("@ClassID", ClassID);
                     using (var reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
                         {
+                            //Console.WriteLine(reader["weekID"] + " " + reader["weekNumber"] + " " + reader["startDate"] + " " + reader["endDate"] + " " + reader["isAttendanceLinkCreated"]);
                             return Convert.ToBoolean(reader["isAttendanceLinkCreated"]);
                         }
                         else
                         {
-                            return false;
+                            return true;
                         }
                     }
                 }
+            }
+        }
+        // Thêm thông báo
+        public bool AddAnnouncement(int weekID, string content)
+        {
+            using (var conn = new SQLiteConnection(_connectionString))
+            {
+                conn.Open();
+                using (var cmd = new SQLiteCommand(conn))
+                {
+                    cmd.CommandText = @"
+                    INSERT INTO Announcements (weekID, content)
+                    VALUES (@WeekID, @Content);
+                    ";
+                    cmd.Parameters.AddWithValue("@WeekID", weekID);
+                    cmd.Parameters.AddWithValue("@Content", content);
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+        // Cập nhật thông báo
+        public bool UpdateAnnouncement(int announcementID, string newContent)
+        {
+            using (var conn = new SQLiteConnection(_connectionString))
+            {
+                conn.Open();
+                using (var cmd = new SQLiteCommand(conn))
+                {
+                    cmd.CommandText = @"
+                    UPDATE Announcements
+                    SET content = @NewContent
+                    WHERE announcementID = @AnnouncementID;
+                    ";
+                    cmd.Parameters.AddWithValue("@NewContent", newContent);
+                    cmd.Parameters.AddWithValue("@AnnouncementID", announcementID);
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+        // Xóa thông báo
+        public bool DeleteAnnouncement(int announcementID)
+        {
+            using (var conn = new SQLiteConnection(_connectionString))
+            {
+                conn.Open();
+                using (var cmd = new SQLiteCommand(conn))
+                {
+                    cmd.CommandText = @"
+                    DELETE FROM Announcements
+                    WHERE announcementID = @AnnouncementID;
+                    ";
+                    cmd.Parameters.AddWithValue("@AnnouncementID", announcementID);
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+        public async Task SyncAnnouncementsDataToGoogleSheet(GoogleSheetsRepository googleSheetsRepo)
+        {
+            await googleSheetsRepo.ClearSheetData("Announcements!A2:C");
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+                var command = connection.CreateCommand();
+                command.CommandText = @"
+                    SELECT * FROM Announcements;
+                ";
+
+                var reader = await command.ExecuteReaderAsync();
+                var announcementID = new List<int>();
+                var weekIDs = new List<int>();
+                var contents = new List<string>();
+
+                while (reader.Read())
+                {
+                    announcementID.Add(Convert.ToInt32(reader["AnnouncementID"]));
+                    weekIDs.Add(Convert.ToInt32(reader["WeekID"]));
+                    contents.Add(reader["Content"].ToString());
+                }
+
+                // Chuẩn bị danh sách giá trị để cập nhật hàng loạt
+                var values = new List<IList<object>>();
+                for (int i = 0; i < weekIDs.Count; i++)
+                {
+                    values.Add(new List<object> { announcementID[i], weekIDs[i], contents[i] });
+                }
+
+                var range = $"Announcements!A2:C{weekIDs.Count + 1}";
+                await googleSheetsRepo.UpdateToGoogleSheets(range, values);
             }
         }
     }

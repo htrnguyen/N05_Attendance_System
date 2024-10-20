@@ -144,7 +144,7 @@ namespace DAL.Repositories
                 }
 
                 // Cập nhật mật khẩu lên Google Sheets với tất cả hàng trong một lần
-                var range = $"Weeks!F2:F{IsAttendanceLinkCreateds.Count + 1}";
+                var range = $"Weeks!G2:G{IsAttendanceLinkCreateds.Count + 1}";
                 await googleSheetsRepo.UpdateToGoogleSheets(range, values);
             }
         }

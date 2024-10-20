@@ -30,19 +30,19 @@
         {
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxDashboard = new System.Windows.Forms.PictureBox();
             this.pictureBoxAvt = new System.Windows.Forms.PictureBox();
             this.pictureBoxReload = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelDashboard = new System.Windows.Forms.Panel();
+            this.panelSpace = new System.Windows.Forms.Panel();
             this.lbDashboard = new System.Windows.Forms.Label();
-            this.panelInfoUser = new System.Windows.Forms.Panel();
-            this.lbUserInfo = new System.Windows.Forms.Label();
             this.panelChangePassword = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.lbChangePassword = new System.Windows.Forms.Label();
             this.panelLine2 = new System.Windows.Forms.Panel();
             this.panelLogout = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lbLogout = new System.Windows.Forms.Label();
             this.flpDateTime = new System.Windows.Forms.FlowLayoutPanel();
@@ -58,19 +58,13 @@
             this.hiddenLabel = new System.Windows.Forms.Label();
             this.tbHide = new System.Windows.Forms.TextBox();
             this.panelSidebar = new System.Windows.Forms.Panel();
-            this.panelSpace = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDashboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReload)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.panelDashboard.SuspendLayout();
-            this.panelInfoUser.SuspendLayout();
             this.panelChangePassword.SuspendLayout();
             this.panelLogout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -99,16 +93,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::GUI.Properties.Resources.icons8_male_user_961;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(45, 44);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
             // 
             // pictureBoxDashboard
             // 
@@ -145,14 +129,13 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.panelDashboard);
-            this.flowLayoutPanel1.Controls.Add(this.panelInfoUser);
             this.flowLayoutPanel1.Controls.Add(this.panelChangePassword);
             this.flowLayoutPanel1.Controls.Add(this.panelLine2);
             this.flowLayoutPanel1.Controls.Add(this.panelLogout);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 174);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(268, 576);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(268, 658);
             this.flowLayoutPanel1.TabIndex = 13;
             // 
             // panelDashboard
@@ -168,6 +151,13 @@
             this.panelDashboard.Size = new System.Drawing.Size(251, 64);
             this.panelDashboard.TabIndex = 6;
             // 
+            // panelSpace
+            // 
+            this.panelSpace.Location = new System.Drawing.Point(3, 51);
+            this.panelSpace.Name = "panelSpace";
+            this.panelSpace.Size = new System.Drawing.Size(245, 10);
+            this.panelSpace.TabIndex = 12;
+            // 
             // lbDashboard
             // 
             this.lbDashboard.AutoSize = true;
@@ -179,30 +169,6 @@
             this.lbDashboard.Text = "Trang Chủ";
             this.lbDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panelInfoUser
-            // 
-            this.panelInfoUser.AutoSize = true;
-            this.panelInfoUser.Controls.Add(this.panel1);
-            this.panelInfoUser.Controls.Add(this.pictureBox1);
-            this.panelInfoUser.Controls.Add(this.lbUserInfo);
-            this.panelInfoUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelInfoUser.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.panelInfoUser.Location = new System.Drawing.Point(3, 73);
-            this.panelInfoUser.Name = "panelInfoUser";
-            this.panelInfoUser.Size = new System.Drawing.Size(251, 64);
-            this.panelInfoUser.TabIndex = 7;
-            // 
-            // lbUserInfo
-            // 
-            this.lbUserInfo.AutoSize = true;
-            this.lbUserInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.lbUserInfo.Location = new System.Drawing.Point(53, 1);
-            this.lbUserInfo.Name = "lbUserInfo";
-            this.lbUserInfo.Size = new System.Drawing.Size(139, 38);
-            this.lbUserInfo.TabIndex = 5;
-            this.lbUserInfo.Text = "Thông tin";
-            this.lbUserInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // panelChangePassword
             // 
             this.panelChangePassword.AutoSize = true;
@@ -211,10 +177,17 @@
             this.panelChangePassword.Controls.Add(this.lbChangePassword);
             this.panelChangePassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panelChangePassword.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelChangePassword.Location = new System.Drawing.Point(3, 143);
+            this.panelChangePassword.Location = new System.Drawing.Point(3, 73);
             this.panelChangePassword.Name = "panelChangePassword";
             this.panelChangePassword.Size = new System.Drawing.Size(251, 64);
             this.panelChangePassword.TabIndex = 8;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(3, 51);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(245, 10);
+            this.panel2.TabIndex = 14;
             // 
             // lbChangePassword
             // 
@@ -230,7 +203,7 @@
             // panelLine2
             // 
             this.panelLine2.BackColor = System.Drawing.Color.Gainsboro;
-            this.panelLine2.Location = new System.Drawing.Point(3, 213);
+            this.panelLine2.Location = new System.Drawing.Point(3, 143);
             this.panelLine2.Name = "panelLine2";
             this.panelLine2.Size = new System.Drawing.Size(229, 5);
             this.panelLine2.TabIndex = 11;
@@ -243,10 +216,17 @@
             this.panelLogout.Controls.Add(this.lbLogout);
             this.panelLogout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panelLogout.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelLogout.Location = new System.Drawing.Point(3, 224);
+            this.panelLogout.Location = new System.Drawing.Point(3, 154);
             this.panelLogout.Name = "panelLogout";
             this.panelLogout.Size = new System.Drawing.Size(251, 64);
             this.panelLogout.TabIndex = 8;
+            // 
+            // panel3
+            // 
+            this.panel3.Location = new System.Drawing.Point(3, 51);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(245, 10);
+            this.panel3.TabIndex = 15;
             // 
             // pictureBox3
             // 
@@ -400,34 +380,6 @@
             this.panelSidebar.Size = new System.Drawing.Size(300, 844);
             this.panelSidebar.TabIndex = 21;
             // 
-            // panelSpace
-            // 
-            this.panelSpace.Location = new System.Drawing.Point(3, 51);
-            this.panelSpace.Name = "panelSpace";
-            this.panelSpace.Size = new System.Drawing.Size(245, 10);
-            this.panelSpace.TabIndex = 12;
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(3, 51);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(245, 10);
-            this.panel1.TabIndex = 13;
-            // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(3, 51);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(245, 10);
-            this.panel2.TabIndex = 14;
-            // 
-            // panel3
-            // 
-            this.panel3.Location = new System.Drawing.Point(3, 51);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(245, 10);
-            this.panel3.TabIndex = 15;
-            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -449,7 +401,6 @@
             this.Load += new System.EventHandler(this.AdminForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDashboard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReload)).EndInit();
@@ -457,8 +408,6 @@
             this.flowLayoutPanel1.PerformLayout();
             this.panelDashboard.ResumeLayout(false);
             this.panelDashboard.PerformLayout();
-            this.panelInfoUser.ResumeLayout(false);
-            this.panelInfoUser.PerformLayout();
             this.panelChangePassword.ResumeLayout(false);
             this.panelChangePassword.PerformLayout();
             this.panelLogout.ResumeLayout(false);
@@ -481,15 +430,12 @@
 
         private System.Windows.Forms.PictureBox pictureBoxLogo;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBoxDashboard;
         private System.Windows.Forms.PictureBox pictureBoxAvt;
         private System.Windows.Forms.PictureBox pictureBoxReload;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panelDashboard;
         private System.Windows.Forms.Label lbDashboard;
-        private System.Windows.Forms.Panel panelInfoUser;
-        private System.Windows.Forms.Label lbUserInfo;
         private System.Windows.Forms.Panel panelChangePassword;
         private System.Windows.Forms.Label lbChangePassword;
         private System.Windows.Forms.Panel panelLine2;
@@ -510,7 +456,6 @@
         private System.Windows.Forms.TextBox tbHide;
         private System.Windows.Forms.Panel panelSidebar;
         private System.Windows.Forms.Panel panelSpace;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
     }

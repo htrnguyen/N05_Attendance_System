@@ -39,8 +39,8 @@ namespace BLL.Services
             await _attendanceDAL.SyncWeeksDataToGoogleSheet(_googleSheetsRepo);
         }
         // Lấy toạ độ lớp học
-        public List<String> GetClassCoordinates(int ClassID)
-        {
+        public List<string> GetClassCoordinates(int ClassID)
+        {   
             return _attendanceDAL.GetClassCoordinates(ClassID);
         }
         // Cập nhật trạng thái điểm danh của sinh viên

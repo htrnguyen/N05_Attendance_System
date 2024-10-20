@@ -75,12 +75,12 @@ namespace GUI.Forms.MainForm
             // Lấy ID của kỳ học
             var termID = _termService.GetTermIDByTermName(termName);
 
-            if (_user.Role == "Sinh viên")
+            if (_user.Role == "Student")
             {
                 Console.WriteLine(termID);  
                 ShowForm(new StudentCoursesForm(this, _user.UserID, termID));
             }
-            else if (_user.Role == "Giáo viên")
+            else if (_user.Role == "Teacher")
             {
                 Console.WriteLine(_user.UserID);
                 ShowForm(new TeacherCoursesForm(this, _user.UserID, termID));
@@ -89,6 +89,30 @@ namespace GUI.Forms.MainForm
         private void lbDashboard_Click(object sender, EventArgs e)
         {
             cbbTerms_SelectedIndexChanged(sender, e);
+        }
+
+        public void HideDownloadButton()
+        {
+            panelDownload.Visible = false;
+        }
+
+        private void lbLogout_Click_1(object sender, EventArgs e)
+        {
+            // Quay lại form đăng nhập
+            this.Hide();
+            MainForm mainForm = new MainForm();
+            mainForm.ShowDialog();
+            this.Close();
+        }
+
+        private void lbDownload_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbChangePassword_Click(object sender, EventArgs e)
+        {
+            ShowForm(new AuthenticationForms.ChangePasswordDashBoardForm(this, _user.Email));
         }
     }
 }

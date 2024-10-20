@@ -31,7 +31,7 @@ public class DataLoader
             var classesData = await _googleSheetsRepo.GetSheetData("Classes!A1:E");
             var groupsData = await _googleSheetsRepo.GetSheetData("Groups!A1:E");
             var enrollmentsData = await _googleSheetsRepo.GetSheetData("Enrollments!A1:C");
-            var weeksData = await _googleSheetsRepo.GetSheetData("Weeks!A1:F");
+            var weeksData = await _googleSheetsRepo.GetSheetData("Weeks!A1:G");
             var announcementsData = await _googleSheetsRepo.GetSheetData("Announcements!A1:C");
             var attendancesData = await _googleSheetsRepo.GetSheetData("Attendances!A1:H");
 

@@ -29,7 +29,24 @@
         private void InitializeComponent()
         {
             this.panelSidebar = new System.Windows.Forms.Panel();
-            this.tbHide = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelDashboard = new System.Windows.Forms.Panel();
+            this.pictureBoxDashboard = new System.Windows.Forms.PictureBox();
+            this.panelSpace = new System.Windows.Forms.Panel();
+            this.lbDashboard = new System.Windows.Forms.Label();
+            this.panelDownload = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBoxDownload = new System.Windows.Forms.PictureBox();
+            this.lbDownload = new System.Windows.Forms.Label();
+            this.panelChangePassword = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lbChangePassword = new System.Windows.Forms.Label();
+            this.panelLine2 = new System.Windows.Forms.Panel();
+            this.panelLogout = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.lbLogout = new System.Windows.Forms.Label();
             this.hiddenLabel = new System.Windows.Forms.Label();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.panelLine1 = new System.Windows.Forms.Panel();
@@ -42,50 +59,31 @@
             this.panelInfo = new System.Windows.Forms.Panel();
             this.labelRole = new System.Windows.Forms.Label();
             this.labelFullName = new System.Windows.Forms.Label();
-            this.pictureBoxReload = new System.Windows.Forms.PictureBox();
             this.labelDateTime = new System.Windows.Forms.Label();
             this.flpDateTime = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panelDashboard = new System.Windows.Forms.Panel();
-            this.pictureBoxDashboard = new System.Windows.Forms.PictureBox();
-            this.panelSpace = new System.Windows.Forms.Panel();
-            this.lbDashboard = new System.Windows.Forms.Label();
-            this.panelInfoUser = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lbUserInfo = new System.Windows.Forms.Label();
-            this.panelChangePassword = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.lbChangePassword = new System.Windows.Forms.Label();
-            this.panelLine2 = new System.Windows.Forms.Panel();
-            this.panelLogout = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.lbLogout = new System.Windows.Forms.Label();
+            this.pictureBoxReload = new System.Windows.Forms.PictureBox();
             this.panelSidebar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
-            this.flowLayoutPanelUserInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvt)).BeginInit();
-            this.panelInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReload)).BeginInit();
-            this.flpDateTime.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panelDashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDashboard)).BeginInit();
-            this.panelInfoUser.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelDownload.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownload)).BeginInit();
             this.panelChangePassword.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelLogout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
+            this.flowLayoutPanelUserInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvt)).BeginInit();
+            this.panelInfo.SuspendLayout();
+            this.flpDateTime.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReload)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSidebar
             // 
             this.panelSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(244)))), ((int)(((byte)(250)))));
             this.panelSidebar.Controls.Add(this.flowLayoutPanel1);
-            this.panelSidebar.Controls.Add(this.tbHide);
             this.panelSidebar.Controls.Add(this.hiddenLabel);
             this.panelSidebar.Controls.Add(this.pictureBoxLogo);
             this.panelSidebar.Controls.Add(this.panelLine1);
@@ -95,14 +93,195 @@
             this.panelSidebar.Size = new System.Drawing.Size(300, 844);
             this.panelSidebar.TabIndex = 1;
             // 
-            // tbHide
+            // flowLayoutPanel1
             // 
-            this.tbHide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(244)))), ((int)(((byte)(250)))));
-            this.tbHide.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbHide.Location = new System.Drawing.Point(33, 759);
-            this.tbHide.Name = "tbHide";
-            this.tbHide.Size = new System.Drawing.Size(100, 28);
-            this.tbHide.TabIndex = 12;
+            this.flowLayoutPanel1.Controls.Add(this.panelDashboard);
+            this.flowLayoutPanel1.Controls.Add(this.panelDownload);
+            this.flowLayoutPanel1.Controls.Add(this.panelChangePassword);
+            this.flowLayoutPanel1.Controls.Add(this.panelLine2);
+            this.flowLayoutPanel1.Controls.Add(this.panelLogout);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 177);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(268, 655);
+            this.flowLayoutPanel1.TabIndex = 14;
+            // 
+            // panelDashboard
+            // 
+            this.panelDashboard.AutoSize = true;
+            this.panelDashboard.Controls.Add(this.pictureBoxDashboard);
+            this.panelDashboard.Controls.Add(this.panelSpace);
+            this.panelDashboard.Controls.Add(this.lbDashboard);
+            this.panelDashboard.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panelDashboard.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panelDashboard.Location = new System.Drawing.Point(3, 3);
+            this.panelDashboard.Name = "panelDashboard";
+            this.panelDashboard.Size = new System.Drawing.Size(251, 64);
+            this.panelDashboard.TabIndex = 6;
+            // 
+            // pictureBoxDashboard
+            // 
+            this.pictureBoxDashboard.Image = global::GUI.Properties.Resources.icons8_dashboard_layout_96;
+            this.pictureBoxDashboard.Location = new System.Drawing.Point(3, 1);
+            this.pictureBoxDashboard.Name = "pictureBoxDashboard";
+            this.pictureBoxDashboard.Size = new System.Drawing.Size(45, 44);
+            this.pictureBoxDashboard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxDashboard.TabIndex = 5;
+            this.pictureBoxDashboard.TabStop = false;
+            // 
+            // panelSpace
+            // 
+            this.panelSpace.Location = new System.Drawing.Point(3, 51);
+            this.panelSpace.Name = "panelSpace";
+            this.panelSpace.Size = new System.Drawing.Size(245, 10);
+            this.panelSpace.TabIndex = 12;
+            // 
+            // lbDashboard
+            // 
+            this.lbDashboard.AutoSize = true;
+            this.lbDashboard.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDashboard.Location = new System.Drawing.Point(53, 1);
+            this.lbDashboard.Name = "lbDashboard";
+            this.lbDashboard.Size = new System.Drawing.Size(145, 38);
+            this.lbDashboard.TabIndex = 5;
+            this.lbDashboard.Text = "Trang Chủ";
+            this.lbDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbDashboard.Click += new System.EventHandler(this.lbDashboard_Click);
+            // 
+            // panelDownload
+            // 
+            this.panelDownload.AutoSize = true;
+            this.panelDownload.Controls.Add(this.panel5);
+            this.panelDownload.Controls.Add(this.pictureBoxDownload);
+            this.panelDownload.Controls.Add(this.lbDownload);
+            this.panelDownload.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panelDownload.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panelDownload.Location = new System.Drawing.Point(3, 73);
+            this.panelDownload.Name = "panelDownload";
+            this.panelDownload.Size = new System.Drawing.Size(251, 64);
+            this.panelDownload.TabIndex = 12;
+            // 
+            // panel5
+            // 
+            this.panel5.Location = new System.Drawing.Point(3, 51);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(245, 10);
+            this.panel5.TabIndex = 14;
+            // 
+            // pictureBoxDownload
+            // 
+            this.pictureBoxDownload.Image = global::GUI.Properties.Resources.icons8_download_64;
+            this.pictureBoxDownload.Location = new System.Drawing.Point(3, 1);
+            this.pictureBoxDownload.Name = "pictureBoxDownload";
+            this.pictureBoxDownload.Size = new System.Drawing.Size(45, 44);
+            this.pictureBoxDownload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxDownload.TabIndex = 5;
+            this.pictureBoxDownload.TabStop = false;
+            // 
+            // lbDownload
+            // 
+            this.lbDownload.AutoSize = true;
+            this.lbDownload.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.lbDownload.Location = new System.Drawing.Point(53, 1);
+            this.lbDownload.Name = "lbDownload";
+            this.lbDownload.Size = new System.Drawing.Size(122, 38);
+            this.lbDownload.TabIndex = 5;
+            this.lbDownload.Text = "Xuất file";
+            this.lbDownload.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbDownload.Click += new System.EventHandler(this.lbDownload_Click);
+            // 
+            // panelChangePassword
+            // 
+            this.panelChangePassword.AutoSize = true;
+            this.panelChangePassword.Controls.Add(this.panel2);
+            this.panelChangePassword.Controls.Add(this.pictureBox2);
+            this.panelChangePassword.Controls.Add(this.lbChangePassword);
+            this.panelChangePassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panelChangePassword.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panelChangePassword.Location = new System.Drawing.Point(3, 143);
+            this.panelChangePassword.Name = "panelChangePassword";
+            this.panelChangePassword.Size = new System.Drawing.Size(251, 64);
+            this.panelChangePassword.TabIndex = 8;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(3, 51);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(245, 10);
+            this.panel2.TabIndex = 14;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::GUI.Properties.Resources.icons8_change_50;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 1);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(45, 44);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
+            // lbChangePassword
+            // 
+            this.lbChangePassword.AutoSize = true;
+            this.lbChangePassword.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.lbChangePassword.Location = new System.Drawing.Point(53, 1);
+            this.lbChangePassword.Name = "lbChangePassword";
+            this.lbChangePassword.Size = new System.Drawing.Size(189, 38);
+            this.lbChangePassword.TabIndex = 5;
+            this.lbChangePassword.Text = "Đổi mật khẩu";
+            this.lbChangePassword.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbChangePassword.Click += new System.EventHandler(this.lbChangePassword_Click);
+            // 
+            // panelLine2
+            // 
+            this.panelLine2.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelLine2.Location = new System.Drawing.Point(3, 213);
+            this.panelLine2.Name = "panelLine2";
+            this.panelLine2.Size = new System.Drawing.Size(229, 5);
+            this.panelLine2.TabIndex = 11;
+            // 
+            // panelLogout
+            // 
+            this.panelLogout.AutoSize = true;
+            this.panelLogout.Controls.Add(this.panel3);
+            this.panelLogout.Controls.Add(this.pictureBox3);
+            this.panelLogout.Controls.Add(this.lbLogout);
+            this.panelLogout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panelLogout.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panelLogout.Location = new System.Drawing.Point(3, 224);
+            this.panelLogout.Name = "panelLogout";
+            this.panelLogout.Size = new System.Drawing.Size(251, 64);
+            this.panelLogout.TabIndex = 8;
+            // 
+            // panel3
+            // 
+            this.panel3.Location = new System.Drawing.Point(3, 51);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(245, 10);
+            this.panel3.TabIndex = 15;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::GUI.Properties.Resources.shutdown;
+            this.pictureBox3.Location = new System.Drawing.Point(3, 1);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(45, 44);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 5;
+            this.pictureBox3.TabStop = false;
+            // 
+            // lbLogout
+            // 
+            this.lbLogout.AutoSize = true;
+            this.lbLogout.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.lbLogout.ForeColor = System.Drawing.Color.Red;
+            this.lbLogout.Location = new System.Drawing.Point(53, 1);
+            this.lbLogout.Name = "lbLogout";
+            this.lbLogout.Size = new System.Drawing.Size(148, 38);
+            this.lbLogout.TabIndex = 5;
+            this.lbLogout.Text = "Đăng xuất";
+            this.lbLogout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbLogout.Click += new System.EventHandler(this.lbLogout_Click_1);
             // 
             // hiddenLabel
             // 
@@ -224,17 +403,6 @@
             this.labelFullName.TabIndex = 9;
             this.labelFullName.Text = "Name";
             // 
-            // pictureBoxReload
-            // 
-            this.pictureBoxReload.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxReload.Image = global::GUI.Properties.Resources.icons8_reset_50;
-            this.pictureBoxReload.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxReload.Name = "pictureBoxReload";
-            this.pictureBoxReload.Size = new System.Drawing.Size(39, 35);
-            this.pictureBoxReload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxReload.TabIndex = 17;
-            this.pictureBoxReload.TabStop = false;
-            // 
             // labelDateTime
             // 
             this.labelDateTime.AutoSize = true;
@@ -256,192 +424,16 @@
             this.flpDateTime.Size = new System.Drawing.Size(372, 41);
             this.flpDateTime.TabIndex = 20;
             // 
-            // flowLayoutPanel1
+            // pictureBoxReload
             // 
-            this.flowLayoutPanel1.Controls.Add(this.panelDashboard);
-            this.flowLayoutPanel1.Controls.Add(this.panelInfoUser);
-            this.flowLayoutPanel1.Controls.Add(this.panelChangePassword);
-            this.flowLayoutPanel1.Controls.Add(this.panelLine2);
-            this.flowLayoutPanel1.Controls.Add(this.panelLogout);
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 177);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(268, 576);
-            this.flowLayoutPanel1.TabIndex = 14;
-            // 
-            // panelDashboard
-            // 
-            this.panelDashboard.AutoSize = true;
-            this.panelDashboard.Controls.Add(this.pictureBoxDashboard);
-            this.panelDashboard.Controls.Add(this.panelSpace);
-            this.panelDashboard.Controls.Add(this.lbDashboard);
-            this.panelDashboard.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelDashboard.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelDashboard.Location = new System.Drawing.Point(3, 3);
-            this.panelDashboard.Name = "panelDashboard";
-            this.panelDashboard.Size = new System.Drawing.Size(251, 64);
-            this.panelDashboard.TabIndex = 6;
-            // 
-            // pictureBoxDashboard
-            // 
-            this.pictureBoxDashboard.Image = global::GUI.Properties.Resources.icons8_dashboard_layout_96;
-            this.pictureBoxDashboard.Location = new System.Drawing.Point(3, 1);
-            this.pictureBoxDashboard.Name = "pictureBoxDashboard";
-            this.pictureBoxDashboard.Size = new System.Drawing.Size(45, 44);
-            this.pictureBoxDashboard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxDashboard.TabIndex = 5;
-            this.pictureBoxDashboard.TabStop = false;
-            // 
-            // panelSpace
-            // 
-            this.panelSpace.Location = new System.Drawing.Point(3, 51);
-            this.panelSpace.Name = "panelSpace";
-            this.panelSpace.Size = new System.Drawing.Size(245, 10);
-            this.panelSpace.TabIndex = 12;
-            // 
-            // lbDashboard
-            // 
-            this.lbDashboard.AutoSize = true;
-            this.lbDashboard.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDashboard.Location = new System.Drawing.Point(53, 1);
-            this.lbDashboard.Name = "lbDashboard";
-            this.lbDashboard.Size = new System.Drawing.Size(145, 38);
-            this.lbDashboard.TabIndex = 5;
-            this.lbDashboard.Text = "Trang Chủ";
-            this.lbDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbDashboard.Click += new System.EventHandler(this.lbDashboard_Click);
-            // 
-            // panelInfoUser
-            // 
-            this.panelInfoUser.AutoSize = true;
-            this.panelInfoUser.Controls.Add(this.panel1);
-            this.panelInfoUser.Controls.Add(this.pictureBox1);
-            this.panelInfoUser.Controls.Add(this.lbUserInfo);
-            this.panelInfoUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelInfoUser.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.panelInfoUser.Location = new System.Drawing.Point(3, 73);
-            this.panelInfoUser.Name = "panelInfoUser";
-            this.panelInfoUser.Size = new System.Drawing.Size(251, 64);
-            this.panelInfoUser.TabIndex = 7;
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(3, 51);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(245, 10);
-            this.panel1.TabIndex = 13;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::GUI.Properties.Resources.icons8_male_user_961;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(45, 44);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
-            // lbUserInfo
-            // 
-            this.lbUserInfo.AutoSize = true;
-            this.lbUserInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.lbUserInfo.Location = new System.Drawing.Point(53, 1);
-            this.lbUserInfo.Name = "lbUserInfo";
-            this.lbUserInfo.Size = new System.Drawing.Size(139, 38);
-            this.lbUserInfo.TabIndex = 5;
-            this.lbUserInfo.Text = "Thông tin";
-            this.lbUserInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panelChangePassword
-            // 
-            this.panelChangePassword.AutoSize = true;
-            this.panelChangePassword.Controls.Add(this.panel2);
-            this.panelChangePassword.Controls.Add(this.pictureBox2);
-            this.panelChangePassword.Controls.Add(this.lbChangePassword);
-            this.panelChangePassword.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelChangePassword.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelChangePassword.Location = new System.Drawing.Point(3, 143);
-            this.panelChangePassword.Name = "panelChangePassword";
-            this.panelChangePassword.Size = new System.Drawing.Size(251, 64);
-            this.panelChangePassword.TabIndex = 8;
-            // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(3, 51);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(245, 10);
-            this.panel2.TabIndex = 14;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::GUI.Properties.Resources.icons8_change_50;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(45, 44);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
-            // lbChangePassword
-            // 
-            this.lbChangePassword.AutoSize = true;
-            this.lbChangePassword.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.lbChangePassword.Location = new System.Drawing.Point(53, 1);
-            this.lbChangePassword.Name = "lbChangePassword";
-            this.lbChangePassword.Size = new System.Drawing.Size(189, 38);
-            this.lbChangePassword.TabIndex = 5;
-            this.lbChangePassword.Text = "Đổi mật khẩu";
-            this.lbChangePassword.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panelLine2
-            // 
-            this.panelLine2.BackColor = System.Drawing.Color.Gainsboro;
-            this.panelLine2.Location = new System.Drawing.Point(3, 213);
-            this.panelLine2.Name = "panelLine2";
-            this.panelLine2.Size = new System.Drawing.Size(229, 5);
-            this.panelLine2.TabIndex = 11;
-            // 
-            // panelLogout
-            // 
-            this.panelLogout.AutoSize = true;
-            this.panelLogout.Controls.Add(this.panel3);
-            this.panelLogout.Controls.Add(this.pictureBox3);
-            this.panelLogout.Controls.Add(this.lbLogout);
-            this.panelLogout.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelLogout.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelLogout.Location = new System.Drawing.Point(3, 224);
-            this.panelLogout.Name = "panelLogout";
-            this.panelLogout.Size = new System.Drawing.Size(251, 64);
-            this.panelLogout.TabIndex = 8;
-            // 
-            // panel3
-            // 
-            this.panel3.Location = new System.Drawing.Point(3, 51);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(245, 10);
-            this.panel3.TabIndex = 15;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::GUI.Properties.Resources.shutdown;
-            this.pictureBox3.Location = new System.Drawing.Point(3, 1);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(45, 44);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 5;
-            this.pictureBox3.TabStop = false;
-            // 
-            // lbLogout
-            // 
-            this.lbLogout.AutoSize = true;
-            this.lbLogout.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.lbLogout.ForeColor = System.Drawing.Color.Red;
-            this.lbLogout.Location = new System.Drawing.Point(53, 1);
-            this.lbLogout.Name = "lbLogout";
-            this.lbLogout.Size = new System.Drawing.Size(148, 38);
-            this.lbLogout.TabIndex = 5;
-            this.lbLogout.Text = "Đăng xuất";
-            this.lbLogout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pictureBoxReload.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxReload.Image = global::GUI.Properties.Resources.icons8_reset_50;
+            this.pictureBoxReload.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxReload.Name = "pictureBoxReload";
+            this.pictureBoxReload.Size = new System.Drawing.Size(39, 35);
+            this.pictureBoxReload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxReload.TabIndex = 17;
+            this.pictureBoxReload.TabStop = false;
             // 
             // MainDashboardForm
             // 
@@ -467,29 +459,29 @@
             this.Load += new System.EventHandler(this.MainDashboardForm_Load);
             this.panelSidebar.ResumeLayout(false);
             this.panelSidebar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
-            this.flowLayoutPanelUserInfo.ResumeLayout(false);
-            this.flowLayoutPanelUserInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvt)).EndInit();
-            this.panelInfo.ResumeLayout(false);
-            this.panelInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReload)).EndInit();
-            this.flpDateTime.ResumeLayout(false);
-            this.flpDateTime.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.panelDashboard.ResumeLayout(false);
             this.panelDashboard.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDashboard)).EndInit();
-            this.panelInfoUser.ResumeLayout(false);
-            this.panelInfoUser.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelDownload.ResumeLayout(false);
+            this.panelDownload.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownload)).EndInit();
             this.panelChangePassword.ResumeLayout(false);
             this.panelChangePassword.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelLogout.ResumeLayout(false);
             this.panelLogout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
+            this.flowLayoutPanelUserInfo.ResumeLayout(false);
+            this.flowLayoutPanelUserInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvt)).EndInit();
+            this.panelInfo.ResumeLayout(false);
+            this.panelInfo.PerformLayout();
+            this.flpDateTime.ResumeLayout(false);
+            this.flpDateTime.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReload)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -513,24 +505,23 @@
         private System.Windows.Forms.Label labelFullName;
         private System.Windows.Forms.Label labelDateTime;
         private System.Windows.Forms.FlowLayoutPanel flpDateTime;
-        private System.Windows.Forms.TextBox tbHide;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panelDashboard;
         private System.Windows.Forms.PictureBox pictureBoxDashboard;
         private System.Windows.Forms.Panel panelSpace;
         private System.Windows.Forms.Label lbDashboard;
-        private System.Windows.Forms.Panel panelInfoUser;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lbUserInfo;
-        private System.Windows.Forms.Panel panelChangePassword;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label lbChangePassword;
         private System.Windows.Forms.Panel panelLine2;
         private System.Windows.Forms.Panel panelLogout;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lbLogout;
+        private System.Windows.Forms.Panel panelDownload;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.PictureBox pictureBoxDownload;
+        private System.Windows.Forms.Label lbDownload;
+        private System.Windows.Forms.Panel panelChangePassword;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label lbChangePassword;
     }
 }

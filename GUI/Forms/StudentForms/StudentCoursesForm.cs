@@ -31,6 +31,7 @@ namespace GUI.Forms.StudentForms
         private void StudentCoursesForm_Load(object sender, EventArgs e)
         {
             GetCourses();
+            _mainDashboardForm.HideDownloadButton();
         }
         public void GetCourses()
         {

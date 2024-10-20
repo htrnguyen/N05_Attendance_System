@@ -32,9 +32,9 @@ namespace BLL.Services
             return _studentDAL.GetAnnouncements(WeekID);
         }
         // Kiểm tra xem Giáo viên đã tạo link chưa
-        public bool CheckAttendanceLink(int WeekID, int CourseID, int TeacherID)
+        public bool CheckAttendanceLink(int WeekID, int CourseID, int TeacherID, int ClassID)
         {
-            return _studentDAL.CheckAttendanceLink(WeekID, CourseID, TeacherID);
+            return _studentDAL.CheckAttendanceLink(WeekID, CourseID, TeacherID, ClassID);
         }
         // Kiểm tra inh viên đã điểm danh chưa
         public bool CheckAttendance(int UserID, int WeekID, int CourseID)

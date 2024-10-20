@@ -73,6 +73,18 @@ namespace DAL
                 return Task.CompletedTask;
             });
         }
+        // Phương thức xoá dữ liệu trên Google Sheets
+        public async Task ClearSheetData(string sheetRange)
+        {
+            // Bỏ qua dòng đầu tiên
+            ClearValuesRequest requestBody = new ClearValuesRequest();
+            var request = _sheetsService.Spreadsheets.Values.Clear(requestBody, _spreadsheetId, sheetRange);
+            await RetryOnExceptionAsync(MaxRetryAttempts, async () =>
+            {
+                await request.ExecuteAsync();
+                return Task.CompletedTask;
+            });
+        }
         // Hàm hỗ trợ để retry nếu gặp lỗi
         private async Task<T> RetryOnExceptionAsync<T>(int maxAttempts, Func<Task<T>> operation)
         {

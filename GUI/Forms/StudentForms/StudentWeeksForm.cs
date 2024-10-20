@@ -125,6 +125,7 @@ namespace GUI.Forms.StudentForms
         private void StudentWeeksForm_Load(object sender, EventArgs e)
         {
             GetWeeks();
+            _mainDashboardForm.HideDownloadButton();
         }
         // Lấy toàn bộ tuần học của môn học
         private void GetWeeks()
@@ -179,7 +180,7 @@ namespace GUI.Forms.StudentForms
                 };
                 checkInButton.Click += (s, e) => CheckInButton_Click(week.WeekID);
 
-                if (_studentService.CheckAttendanceLink(week.WeekID, _course.CourseID, _course.TeacherID))
+                if (!_studentService.CheckAttendanceLink(week.WeekID, _course.CourseID, _course.TeacherID, _course.ClassID))
                 {
                     checkInButton.Enabled = true;
                 }
