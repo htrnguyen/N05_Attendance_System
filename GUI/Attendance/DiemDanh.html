@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p id="demo"></p>
+
+<script>
+const x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError, { enableHighAccuracy: true });
+  } else {
+    x.innerHTML = "Trình duyệt không hỗ trợ định vị địa lý.";
+  }
+}
+
+function showPosition(position) {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+  x.innerHTML = "Vĩ độ: " + latitude + "<br>Kinh độ: " + longitude;
+
+  // Gửi dữ liệu về WinForms
+  const message = JSON.stringify({ latitude: latitude, longitude: longitude });
+  window.chrome.webview.postMessage(message); 
+}
+
+function showError(error) {
+  let errorMessage;
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      errorMessage = "Người dùng đã từ chối yêu cầu xác định vị trí.";
+      break;
+    case error.POSITION_UNAVAILABLE:
+      errorMessage = "Thông tin vị trí không khả dụng.";
+      break;
+    case error.TIMEOUT:
+      errorMessage = "Yêu cầu xác định vị trí đã hết thời gian.";
+      break;
+    case error.UNKNOWN_ERROR:
+      errorMessage = "Đã xảy ra lỗi không xác định.";
+      break;
+  }
+  x.innerHTML = errorMessage;
+  
+  // Trả về giá trị -1 nếu có lỗi
+  const message = JSON.stringify({ latitude: -1, longitude: -1 });
+  window.chrome.webview.postMessage(message);
+}
+</script>
+
+</body>
+</html>
