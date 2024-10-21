@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DTO;
 using DAL.Repositories;
 using DAL;
+using System.Net;
 
 namespace BLL.Services
 {
@@ -44,9 +45,14 @@ namespace BLL.Services
             return _attendanceDAL.GetClassCoordinates(ClassID);
         }
         // Cập nhật trạng thái điểm danh của sinh viên
-        public bool UpdateAttendance(int StudentID, int WeekID, string Status, string Latiude, string Longtiude, string IpAddress)
+        public void UpdateAttendance(int StudentID, int WeekID, int GroupID, int Status, string Latitude, string Longtiude, string IpAddress)
         {
-            return _attendanceDAL.UpdateAttendance(StudentID, WeekID, Status, Latiude, Longtiude, IpAddress);
+            _attendanceDAL.UpdateAttendance(StudentID, WeekID, GroupID, Status, Latitude, Longtiude, IpAddress);
+        }
+        // Cập nhật trạng thái điểm danh của sinh viên
+        public bool UpdateStatusAttendance(int StudentID, int WeekID, int GroupID, int Status, string Latitude, string Longitude, string IpAddress)
+        {
+            return _attendanceDAL.UpdateStatusAttendance(StudentID, WeekID, GroupID, Status, Latitude, Longitude, IpAddress);
         }
         // Cập nhật lên Google Sheets
         public async Task SyncAttendancesDataToGoogleSheet()
@@ -54,9 +60,19 @@ namespace BLL.Services
             await _attendanceDAL.SyncAttendancesDataToGoogleSheet(_googleSheetsRepo);
         }
         // Kiểm tra IpAddress có tồn tại trong bảng điểm danh không
-        public bool CheckIpAddress(string IpAddress)
+        public bool CheckIpAddress(string IPAddress, int WeekID, int CourseID, int TeacherID, int ClassID)
         {
-            return _attendanceDAL.CheckIpAddress(IpAddress);
+            return _attendanceDAL.CheckIpAddress(IPAddress, WeekID, CourseID, TeacherID, ClassID);
+        }
+        // Lấy danh sách điểm danh
+        public List<AttendanceDTO> GetAttendances(int teacherID, int courseID, int classID)
+        {
+            return _attendanceDAL.GetAttendances(teacherID, courseID, classID);
+        }
+        // Lấy danh sách sinh viên
+        public List<ListStudentDTO> GetStudentInClass(int teacherID, int courseID, int classID)
+        {
+            return _attendanceDAL.GetStudentInClass(teacherID, courseID, classID);
         }
     }
 }

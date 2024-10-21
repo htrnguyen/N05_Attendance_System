@@ -25,9 +25,9 @@ namespace BLL.Services
             return _teacherDAL.GetCourses(userID, termID);
         }
         // Lấy toàn bộ tuần học của môn học
-        public List<WeekDTO> GetWeeks(int CourseID)
+        public List<WeekDTO> GetWeeks(int CourseID, int GroupID)
         {
-            return _teacherDAL.GetWeeks(CourseID);
+            return _teacherDAL.GetWeeks(CourseID, GroupID);
         }
         // Lấy toàn bộ thông báo của giáo viên
         public List<AnnouncementsDTO> GetAnnouncements(int WeekID)

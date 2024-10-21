@@ -31,6 +31,7 @@ namespace DAL.Repositories
                         c.courseID, 
                         c.courseName, 
                         c.courseCode,
+                        g.groupID,
                         g.groupName,
                         g.sessionTime,
                         cl.classID,
@@ -63,6 +64,7 @@ namespace DAL.Repositories
                                 CourseID = Convert.ToInt32(reader["courseID"]),
                                 CourseName = reader["courseName"].ToString(),
                                 CourseCode = reader["courseCode"].ToString(),
+                                GroupID = Convert.ToInt32(reader["groupID"]),
                                 GroupName = reader["groupName"].ToString(),
                                 SessionTime = reader["sessionTime"].ToString(),
                                 TeacherID = userID,
@@ -77,7 +79,7 @@ namespace DAL.Repositories
             return courses;
         }
         // Lấy toàn bộ tuần học của môn học
-        public List<WeekDTO> GetWeeks(int CourseID)
+        public List<WeekDTO> GetWeeks(int CourseID, int GroupID)
         {
             List<WeekDTO> weeks = new List<WeekDTO>();
             using (var conn = new SQLiteConnection(_connectionString))
@@ -88,9 +90,9 @@ namespace DAL.Repositories
                     cmd.CommandText = @"
                     SELECT 
                         w.weekID,
-	                    w.weekNumber,
-	                    w.startDate,
-	                    w.endDate
+                        w.weekNumber,
+                        w.startDate,
+                        w.endDate
                     FROM 
                         Courses c
                     JOIN 
@@ -99,8 +101,10 @@ namespace DAL.Repositories
                         Weeks w ON c.courseID = w.courseID
                     WHERE 
                         c.courseID = @CourseID
+                        AND w.groupID = @GroupID  -- Thêm GroupID vào điều kiện
                     ";
-                    cmd.Parameters.AddWithValue("@CourseID", CourseID);
+                            cmd.Parameters.AddWithValue("@CourseID", CourseID);
+                    cmd.Parameters.AddWithValue("@GroupID", GroupID);  
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())

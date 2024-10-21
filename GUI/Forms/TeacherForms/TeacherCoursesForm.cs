@@ -30,6 +30,7 @@ namespace GUI.Forms.TeacherForms
         private void TeacherCoursesForm_Load(object sender, EventArgs e)
         {
             GetCourses();
+            _mainDashboardForm.HideAttendanceButton();
         }
         public void GetCourses()
         {

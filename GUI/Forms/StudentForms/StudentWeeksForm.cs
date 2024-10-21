@@ -81,7 +81,7 @@ namespace GUI.Forms.StudentForms
 
                 string IPAddress = GetIPAddress();
                 // Nếu Ip đã tồn tại thì không cho điểm danh
-                if (_attendanceService.CheckIpAddress(IPAddress))
+                if (_attendanceService.CheckIpAddress(IPAddress, tempWeek, _course.CourseID, _course.TeacherID, _course.ClassID))
                 {
                     MessageBox.Show("Điểm danh thất bại.\nBạn đã điểm danh từ thiết bị khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -89,30 +89,22 @@ namespace GUI.Forms.StudentForms
 
                 if (isInArea)
                 {
-                    MessageBox.Show("Điểm danh thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // Cập nhật trạng thái điểm danh 
-                    bool isAttendance = _attendanceService.UpdateAttendance(_userID, tempWeek, "Có mặt", receivedLat, receivedLon, IPAddress);
+                    // Cập nhật trạng thái điểm danh
+                    bool isAttendance = _attendanceService.UpdateStatusAttendance(_userID, tempWeek, _course.GroupID, 1,  receivedLat, receivedLon, IPAddress);
                     if (isAttendance)
                     {
+                        Console.WriteLine("Đang cập nhật điểm danh...");
                         // Cập nhật lên Google Sheets
                         await _attendanceService.SyncAttendancesDataToGoogleSheet();
 
                         // Refresh lại form
                         GetWeeks();
                     }
+                    MessageBox.Show("Điểm danh thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     MessageBox.Show("Điểm danh thất bại.\nBạn không ở trong phạm vi điểm danh.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    
-                    bool isAttendance = _attendanceService.UpdateAttendance(_userID, tempWeek, "Vắng mặt", null, null, IPAddress);
-
-                    if (isAttendance)
-                    {
-                        // Cập nhật lên Google Sheets
-                        await _attendanceService.SyncAttendancesDataToGoogleSheet();
-                    } 
                         
                 }
             }
@@ -130,7 +122,7 @@ namespace GUI.Forms.StudentForms
         // Lấy toàn bộ tuần học của môn học
         private void GetWeeks()
         {
-            var weeks = _studentService.GetWeeks(_course.CourseID);
+            var weeks = _studentService.GetWeeks(_course.CourseID, _course.GroupID);
 
             tlpMain.Controls.Clear();
             tlpMain.AutoScroll = true;
@@ -227,8 +219,7 @@ namespace GUI.Forms.StudentForms
         {
             this.tempWeek = weekID;
 
-            string projectRoot = Directory.GetParent(Application.StartupPath).Parent.FullName;
-            string filePath = Path.Combine(projectRoot, "Attendance", "DiemDanh.html");
+            string filePath = Path.Combine(Application.StartupPath, "Resources", "Attendance", "DiemDanh.html");
             webView.Source = new Uri(filePath);
 
             // Đảm bảo trang web đã tải xong trước khi inject JavaScript
@@ -256,7 +247,7 @@ namespace GUI.Forms.StudentForms
             double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
 
             double distance = earthRadius * c;
-            MessageBox.Show($"Khoảng cách giữa 2 điểm là: {distance} mét");
+            //MessageBox.Show($"Khoảng cách giữa 2 điểm là: {distance} mét");
             return distance;
         }
         // Hàm kiểm tra xem tọa độ có nằm trong bán kính hay không

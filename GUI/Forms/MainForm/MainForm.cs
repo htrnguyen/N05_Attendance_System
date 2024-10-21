@@ -50,7 +50,7 @@ namespace GUI.Forms.MainForm
         // Khởi tạo PictureBox để hiển thị ảnh loading
         private void InitializeLoadingPictureBox()
         {
-            string imagePath = Path.Combine(Application.StartupPath, @"..\..\Resources\images", "loading1.gif");
+            string imagePath = Path.Combine(Application.StartupPath, "Resources", "images", "loading1.gif");
             if (File.Exists(imagePath))
             {
                 pictureBoxLoad = new PictureBox

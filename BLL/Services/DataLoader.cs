@@ -33,7 +33,7 @@ public class DataLoader
             var enrollmentsData = await _googleSheetsRepo.GetSheetData("Enrollments!A1:C");
             var weeksData = await _googleSheetsRepo.GetSheetData("Weeks!A1:G");
             var announcementsData = await _googleSheetsRepo.GetSheetData("Announcements!A1:C");
-            var attendancesData = await _googleSheetsRepo.GetSheetData("Attendances!A1:H");
+            var attendancesData = await _googleSheetsRepo.GetSheetData("Attendances!A1:I");
 
             using (var connection = new SQLiteConnection(_connectionString))
             {
@@ -72,7 +72,7 @@ public class DataLoader
         await ExecuteWithRetryAsync(async () =>
         {
             var classesData = await _googleSheetsRepo.GetSheetData("Classes!A1:E");
-            var weeksData = await _googleSheetsRepo.GetSheetData("Weeks!A1:F");
+            var weeksData = await _googleSheetsRepo.GetSheetData("Weeks!A1:G");
 
             using (var connection = new SQLiteConnection(_connectionString))
             {

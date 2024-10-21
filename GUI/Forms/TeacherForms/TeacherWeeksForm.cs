@@ -72,25 +72,31 @@ namespace GUI.Forms.TeacherForms
                 // Cập nhật tọa độ lên Google Sheets trong bảng Class 
                 if (receivedLat != "-1" && receivedLon != "-1")
                 {
-                    MessageBox.Show("Tạo điểm danh thành công!");
                     _attendanceService.UpdateCoordinates(_course.ClassID, _course.CourseID, receivedLat, receivedLon);
-                    //MessageBox.Show("Cập nhật tọa độ thành công!");
 
-                    //Console.WriteLine(weekIDTemp + " " + _course.CourseID + " " + _userID);
                     if (_attendanceService.UpdateAttendanceLinkStatus(weekIDTemp, _course.CourseID, _userID))
                     {
-                        //MessageBox.Show("Cập nhật trạng thái điểm danh thành công!");
+                        await _attendanceService.UpdateClassesToGoogleSheet();
+                        await _attendanceService.UpdateWeeksToGoogleSheet();
+
+                        Console.WriteLine(_userID + " " + _course.CourseID + " " + _course.ClassID);
+                        // Lấy danh sách sinh viên trong lớp học
+                        var students = _attendanceService.GetStudentInClass(_userID, _course.CourseID, _course.ClassID);
+
+                        foreach (var student in students)
+                        {
+                            _attendanceService.UpdateAttendance(student.UserID, weekIDTemp, _course.GroupID, 0, "-1", "-1", "-1");
+                        }
+                        MessageBox.Show("Tạo điểm danh thành công!");
+
+                        await _attendanceService.SyncAttendancesDataToGoogleSheet();
+
+                        GetWeeks();
                     }
                     else
                     {
-                        //MessageBox.Show("Cập nhật trạng thái điểm danh thất bại!");
+                        MessageBox.Show("Cập nhật trạng thái điểm danh thất bại!");
                     }
-
-                    await _attendanceService.UpdateClassesToGoogleSheet();
-                    await _attendanceService.UpdateWeeksToGoogleSheet();
-
-                    GetWeeks();
-
                 }
                 else
                 {
@@ -106,11 +112,12 @@ namespace GUI.Forms.TeacherForms
         private void TeacherWeeksForm_Load(object sender, EventArgs e)
         {
             GetWeeks();
+            _mainDashboardForm.HideAttendanceButton();
         }
         // Lấy toàn bộ tuần học của môn học
         private void GetWeeks()
         {
-            this._weeks = _teacherService.GetWeeks(_course.CourseID);
+            this._weeks = _teacherService.GetWeeks(_course.CourseID, _course.GroupID);
 
             tlpMain.Controls.Clear();
             tlpMain.AutoScroll = true;
@@ -326,8 +333,7 @@ namespace GUI.Forms.TeacherForms
         // Hàm lấy toạ độ (kinh độ, vĩ độ)
         public void GetLocation()
         {
-            string projectRoot = Directory.GetParent(Application.StartupPath).Parent.FullName;
-            string filePath = Path.Combine(projectRoot, "Attendance", "DiemDanh.html");
+            string filePath = Path.Combine(Application.StartupPath, "Resources", "Attendance", "DiemDanh.html");
             Console.WriteLine(filePath);
             webView.Source = new Uri(filePath);
 

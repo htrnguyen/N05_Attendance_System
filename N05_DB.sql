@@ -9,6 +9,7 @@ CREATE TABLE Roles (
     RoleID INT PRIMARY KEY IDENTITY(1,1),
     RoleName NVARCHAR(255) NOT NULL
 );
+GO
 
 -- Tạo bảng Users
 CREATE TABLE Users (
@@ -19,6 +20,7 @@ CREATE TABLE Users (
     FullName NVARCHAR(255) NOT NULL,
     RoleID INT FOREIGN KEY REFERENCES Roles(RoleID)
 );
+GO
 
 -- Tạo bảng Terms
 CREATE TABLE Terms (
@@ -105,196 +107,113 @@ VALUES
 ('Teacher'), 
 ('Admin');
 
--- Thêm dữ liệu vào Users (Admin, Teachers, Students)
-INSERT INTO Users (Username, Password, Email, FullName, RoleID)
-VALUES 
-('admin01', 'hashedpassword1', 'admin@example.com', 'Administrator', 3),
-('teacher01', 'hashedpassword2', 'teacher1@example.com', 'John Smith', 2),
-('teacher02', 'hashedpassword3', 'teacher2@example.com', 'Jane Doe', 2),
-('teacher03', 'hashedpassword4', 'teacher3@example.com', 'Mark Brown', 2),
-('teacher04', 'hashedpassword5', 'teacher4@example.com', 'Emma White', 2),
-('teacher05', 'hashedpassword6', 'teacher5@example.com', 'Chris Black', 2),
-('student01', 'hashedpassword7', 'student1@example.com', 'Alice Johnson', 1),
-('student02', 'hashedpassword8', 'student2@example.com', 'Bob Lee', 1),
-('student03', 'hashedpassword9', 'student3@example.com', 'Charlie Kim', 1),
-('student04', 'hashedpassword10', 'student4@example.com', 'David Park', 1),
-('student05', 'hashedpassword11', 'student5@example.com', 'Eva Davis', 1),
-('student06', 'hashedpassword12', 'student6@example.com', 'Frank Miller', 1),
-('student07', 'hashedpassword13', 'student7@example.com', 'Grace Wilson', 1),
-('student08', 'hashedpassword14', 'student8@example.com', 'Henry Adams', 1),
-('student09', 'hashedpassword15', 'student9@example.com', 'Ivy Baker', 1),
-('student10', 'hashedpassword16', 'student10@example.com', 'Jack Nguyen', 1);
+-- Thêm dữ liệu mẫu vào bảng Terms
+INSERT INTO Terms (TermName, StartDate, EndDate) VALUES
+(N'Học kỳ Xuân 2023', '2023-01-15', '2023-05-15'),
+(N'Học kỳ Hè 2023', '2023-06-01', '2023-08-15'),
+(N'Học kỳ Thu 2023', '2023-09-01', '2023-12-20'),
+(N'Học kỳ Đông 2024', '2024-01-10', '2024-04-30');
+GO
 
--- Thêm dữ liệu vào bảng Terms
-INSERT INTO Terms (TermName, StartDate, EndDate)
-VALUES 
-('Fall 2024', '2024-09-01', '2024-12-15'),
-('Spring 2025', '2025-01-15', '2025-05-30'),
-('Fall 2025', '2025-09-01', '2025-12-15'),
-('Spring 2026', '2026-01-15', '2026-05-30');
+-- Thêm dữ liệu mẫu vào bảng Users
+INSERT INTO Users (Username, Password, Email, FullName, RoleID) VALUES
+(N'sinhvien1', 'password1', 'sinhvien1@edu.vn', N'Nguyễn Văn An', 1),
+(N'sinhvien2', 'password2', 'sinhvien2@edu.vn', N'Trần Thị Bình', 1),
+(N'sinhvien3', 'password3', 'sinhvien3@edu.vn', N'Lê Văn Công', 1),
+(N'sinhvien4', 'password4', 'sinhvien4@edu.vn', N'Phạm Thị Dung', 1),
+(N'sinhvien5', 'password5', 'sinhvien5@edu.vn', N'Hoàng Văn Em', 1),
+(N'sinhvien6', 'password6', 'sinhvien6@edu.vn', N'Đặng Thị Hương', 1),
+(N'giangvien1', 'password7', 'giangvien1@edu.vn', N'Vũ Thị Phương', 2),
+(N'giangvien2', 'password8', 'giangvien2@edu.vn', N'Đỗ Văn Quang', 2),
+(N'quantri', 'adminpass', 'admin@edu.vn', N'Quản Trị Viên', 3);
+GO
 
--- Thêm dữ liệu vào bảng Courses
-INSERT INTO Courses (CourseName, CourseCode, TermID)
-VALUES 
-('Database Design', 'CS101', 1),
-('Software Engineering', 'CS102', 1),
-('Data Structures', 'CS103', 2),
-('Algorithms', 'CS104', 2),
-('Operating Systems', 'CS105', 3),
-('Computer Networks', 'CS106', 3),
-('Artificial Intelligence', 'CS107', 4),
-('Machine Learning', 'CS108', 4),
-('Web Development', 'CS109', 1),
-('Mobile App Development', 'CS110', 2);
+-- Thêm dữ liệu mẫu vào bảng Courses
+INSERT INTO Courses (CourseName, CourseCode, TermID) VALUES
+(N'Lập trình Cơ bản', N'LP101', 1),
+(N'Cấu trúc Dữ liệu', N'CTDL201', 1),
+(N'Thuật toán Nâng cao', N'TTN301', 2),
+(N'Hệ quản trị CSDL', N'CSDL401', 3),
+(N'Hệ điều hành', N'HDH501', 3),
+(N'An ninh Mạng', N'ANM601', 4),
+(N'Phát triển Web', N'PTW701', 4),
+(N'Khoa học Dữ liệu', N'KHDL801', 4);
+GO
 
--- Gán giáo viên cho các môn học trong CourseAssignments
-INSERT INTO CourseAssignments (CourseID, TeacherID)
-VALUES 
-(1, 2), (1, 3),
-(2, 2), (2, 4),
-(3, 3), (3, 5),
-(4, 4), (4, 2),
-(5, 5), (5, 3),
-(6, 2), (6, 4),
-(7, 3), (7, 5),
-(8, 4), (8, 2),
-(9, 5), (9, 4),
-(10, 2), (10, 3);
+-- Thêm dữ liệu mẫu vào bảng Classes
+INSERT INTO Classes (ClassCode, ClassName, Latitude, Longitude) VALUES
+(N'Lop01', N'Phòng 101', '21.028511', '105.804817'),
+(N'Lop02', N'Phòng 102', '21.028512', '105.804818'),
+(N'Lop03', N'Phòng 103', '21.028513', '105.804819'),
+(N'Lop04', N'Phòng 104', '21.028514', '105.804820'),
+(N'Lop05', N'Phòng 105', '21.028515', '105.804821');
+GO
 
--- Thêm dữ liệu vào bảng Classes
-INSERT INTO Classes (ClassCode, ClassName, Latitude, Longitude)
-VALUES 
-('DB101', 'Database Design Class A', '21.028511', '105.804817'),
-('DB102', 'Database Design Class B', '21.028511', '105.804817');
+-- Thêm dữ liệu mẫu vào bảng CourseAssignments
+INSERT INTO CourseAssignments (CourseID, TeacherID) VALUES
+(1, 7),  -- Lập trình Cơ bản do giảng viên 1 phụ trách
+(2, 7),
+(3, 8),  -- Thuật toán Nâng cao do giảng viên 2 phụ trách
+(4, 8),
+(5, 7),
+(6, 8),
+(7, 7),
+(8, 8);
+GO
 
--- Thêm dữ liệu vào bảng Groups
-INSERT INTO Groups (CourseID, ClassID, GroupName, SessionTime)
-VALUES 
-(1, 1, 'Group 1', '09:00 AM - 11:00 AM'),
-(1, 2, 'Group 2', '01:00 PM - 03:00 PM'),
-(2, 1, 'Group 1', '09:00 AM - 11:00 AM'),
-(2, 2, 'Group 2', '01:00 PM - 03:00 PM');
+-- Thêm dữ liệu mẫu vào bảng Groups
+INSERT INTO Groups (CourseID, ClassID, GroupName, SessionTime) VALUES
+(1, 1, N'Nhóm A', N'Thứ Hai 8:00-10:00'),
+(1, 2, N'Nhóm B', N'Thứ Tư 10:00-12:00'),
+(2, 1, N'Nhóm A', N'Thứ Ba 13:00-15:00'),
+(3, 3, N'Nhóm C', N'Thứ Năm 14:00-16:00'),
+(4, 2, N'Nhóm B', N'Thứ Sáu 9:00-11:00'),
+(5, 4, N'Nhóm D', N'Thứ Bảy 15:00-17:00'),
+(6, 3, N'Nhóm C', N'Chủ Nhật 10:00-12:00'),
+(7, 4, N'Nhóm D', N'Thứ Hai 14:00-16:00'),
+(8, 5, N'Nhóm E', N'Thứ Tư 16:00-18:00');
+GO
 
--- Thêm dữ liệu vào bảng Enrollments (Sinh viên đăng ký các nhóm học)
-INSERT INTO Enrollments (StudentID, GroupID)
-VALUES 
-(3, 1), (3, 2), (3, 3), (3, 4),  
-(4, 1), (4, 2), (4, 3), (4, 4),
-(5, 1), (5, 2), (5, 3), (5, 4),
-(6, 1), (6, 2), (6, 3), (6, 4),
-(7, 1), (7, 2), (7, 3), (7, 4),
-(8, 1), (8, 2), (8, 3), (8, 4),
-(9, 1), (9, 2), (9, 3), (9, 4),
-(10, 1), (10, 2), (10, 3), (10, 4);
+-- Thêm dữ liệu mẫu vào bảng Enrollments
+INSERT INTO Enrollments (StudentID, GroupID) VALUES
+(1, 1),
+(1, 3),
+(1, 5),
+(2, 1),
+(2, 2),
+(2, 6),
+(3, 4),
+(3, 7),
+(4, 5),
+(4, 8),
+(5, 2),
+(5, 6),
+(6, 9),
+(6, 3);
+GO
 
--- Tạo tuần học cho các môn trong bảng Weeks (10-15 tuần mỗi môn, liên kết với GroupID)
-INSERT INTO Weeks (CourseID, GroupID, WeekNumber, StartDate, EndDate, IsAttendanceLinkCreated)
-VALUES 
--- Khóa học 1 (CS101 - Database Design)
-(1, 1, 1, '2024-09-01', '2024-09-07', 0),
-(1, 1, 2, '2024-09-08', '2024-09-14', 1),
-(1, 1, 3, '2024-09-15', '2024-09-21', 1),
-(1, 1, 4, '2024-09-22', '2024-09-28', 1),
-(1, 1, 5, '2024-09-29', '2024-10-05', 1),
-(1, 1, 6, '2024-10-06', '2024-10-12', 1),
-(1, 1, 7, '2024-10-13', '2024-10-19', 1),
-(1, 1, 8, '2024-10-20', '2024-10-26', 1),
-(1, 1, 9, '2024-10-27', '2024-11-02', 1),
-(1, 1, 10, '2024-11-03', '2024-11-09', 1),
-(1, 2, 1, '2024-09-01', '2024-09-07', 1),
-(1, 2, 2, '2024-09-08', '2024-09-14', 1),
-(1, 2, 3, '2024-09-15', '2024-09-21', 1),
-(1, 2, 4, '2024-09-22', '2024-09-28', 1),
-(1, 2, 5, '2024-09-29', '2024-10-05', 1),
-(1, 2, 6, '2024-10-06', '2024-10-12', 1),
-(1, 2, 7, '2024-10-13', '2024-10-19', 1),
-(1, 2, 8, '2024-10-20', '2024-10-26', 1),
-(1, 2, 9, '2024-10-27', '2024-11-02', 1),
-(1, 2, 10, '2024-11-03', '2024-11-09', 1),
+-- Thêm dữ liệu mẫu vào bảng Weeks
+INSERT INTO Weeks (CourseID, GroupID, WeekNumber, StartDate, EndDate, IsAttendanceLinkCreated) VALUES
+(1, 1, 1, '2023-01-16', '2023-01-22', 1),
+(1, 1, 2, '2023-01-23', '2023-01-29', 1),
+(1, 2, 1, '2023-01-18', '2023-01-24', 1),
+(2, 3, 1, '2023-01-17', '2023-01-23', 1),
+(2, 3, 2, '2023-01-24', '2023-01-30', 1),
+(3, 4, 1, '2023-06-02', '2023-06-08', 1),
+(4, 5, 1, '2023-09-05', '2023-09-11', 1),
+(5, 6, 1, '2023-09-12', '2023-09-18', 1),
+(6, 7, 1, '2024-01-12', '2024-01-18', 1),
+(7, 8, 1, '2024-01-13', '2024-01-19', 1),
+(8, 9, 1, '2024-01-14', '2024-01-20', 1);
+GO
 
--- Khóa học 2 (CS102 - Software Engineering)
-(2, 3, 1, '2025-01-15', '2025-01-21', 0),
-(2, 3, 2, '2025-01-22', '2025-01-28', 0),
-(2, 3, 3, '2025-01-29', '2025-02-04', 0),
-(2, 3, 4, '2025-02-05', '2025-02-11', 0),
-(2, 3, 5, '2025-02-12', '2025-02-18', 0),
-(2, 3, 6, '2025-02-19', '2025-02-25', 0),
-(2, 3, 7, '2025-02-26', '2025-03-04', 0),
-(2, 3, 8, '2025-03-05', '2025-03-11', 0),
-(2, 3, 9, '2025-03-12', '2025-03-18', 0),
-(2, 3, 10, '2025-03-19', '2025-03-25', 0),
-(2, 4, 1, '2025-01-15', '2025-01-21', 0),
-(2, 4, 2, '2025-01-22', '2025-01-28', 0),
-(2, 4, 3, '2025-01-29', '2025-02-04', 0),
-(2, 4, 4, '2025-02-05', '2025-02-11', 0),
-(2, 4, 5, '2025-02-12', '2025-02-18', 0),
-(2, 4, 6, '2025-02-19', '2025-02-25', 0),
-(2, 4, 7, '2025-02-26', '2025-03-04', 0),
-(2, 4, 8, '2025-03-05', '2025-03-11', 0),
-(2, 4, 9, '2025-03-12', '2025-03-18', 0),
-(2, 4, 10, '2025-03-19', '2025-03-25', 0);
+-- Thêm dữ liệu mẫu vào bảng Announcements
+INSERT INTO Announcements (WeekID, Content) VALUES
+(1, N'Chào mừng các bạn đến với Lập trình Cơ bản.'),
+(2, N'Tuần này chúng ta sẽ học về biến và kiểu dữ liệu.'),
+(4, N'Bài tập tuần này đã được đăng, các bạn nhớ hoàn thành trước hạn.'),
+(7, N'Chuẩn bị cho bài kiểm tra giữa kỳ vào tuần sau.'),
+(9, N'Tuần này chúng ta sẽ có buổi thực hành tại phòng lab.'),
+(11, N'Lớp Khoa học Dữ liệu sẽ có buổi hội thảo với chuyên gia.');
+GO
 
-INSERT INTO Attendances (StudentID, WeekID, Status, CheckedInAt, Latitude, Longitude)
-VALUES
--- Sinh viên 1 (Alice Johnson)
-(3, 1, 'Có mặt', '2024-09-01 09:05:00', '21.028511', '105.804817'),
-(3, 2, 'Vắng mặt', NULL, NULL, NULL),
-(3, 3, 'Có mặt', '2024-09-15 09:05:00', '21.028511', '105.804817'),
-(3, 4, 'Có mặt', '2024-09-22 09:10:00', '21.028511', '105.804817'),
-(3, 5, 'Vắng mặt', NULL, NULL, NULL),
-
--- Sinh viên 2 (Bob Lee)
-(4, 1, 'Có mặt', '2024-09-01 09:05:00', '21.028511', '105.804817'),
-(4, 2, 'Có mặt', '2024-09-08 09:03:00', '21.028511', '105.804817'),
-(4, 3, 'Vắng mặt', NULL, NULL, NULL),
-(4, 4, 'Có mặt', '2024-09-22 09:05:00', '21.028511', '105.804817'),
-(4, 5, 'Có mặt', '2024-09-29 09:08:00', '21.028511', '105.804817'),
-
--- Sinh viên 3 (Charlie Kim)
-(5, 1, 'Có mặt', '2024-09-01 09:07:00', '21.028511', '105.804817'),
-(5, 2, 'Có mặt', '2024-09-08 09:06:00', '21.028511', '105.804817'),
-(5, 3, 'Có mặt', '2024-09-15 09:02:00', '21.028511', '105.804817'),
-(5, 4, 'Có mặt', '2024-09-22 09:04:00', '21.028511', '105.804817'),
-(5, 5, 'Vắng mặt', NULL, NULL, NULL),
-
--- Sinh viên 4 (David Park)
-(6, 1, 'Vắng mặt', NULL, NULL, NULL),
-(6, 2, 'Có mặt', '2024-09-08 09:03:00', '21.028511', '105.804817'),
-(6, 3, 'Có mặt', '2024-09-15 09:05:00', '21.028511', '105.804817'),
-(6, 4, 'Có mặt', '2024-09-22 09:01:00', '21.028511', '105.804817'),
-(6, 5, 'Vắng mặt', NULL, NULL, NULL);
-
-SELECT 
-    studentName,
-    courseName,
-    [1] AS 'Week 1',
-    [2] AS 'Week 2',
-    [3] AS 'Week 3',
-    [4] AS 'Week 4',
-    [5] AS 'Week 5',
-	[6] AS 'Wekk 6',
-FROM 
-    (SELECT 
-         u.fullname AS studentName,
-         c.courseName,
-         w.weekNumber,
-         a.status
-     FROM 
-         Attendances a
-     JOIN 
-         Users u ON a.studentID = u.userID
-     JOIN 
-         Enrollments e ON a.studentID = e.studentID
-     JOIN 
-         Groups g ON e.groupID = g.groupID
-     JOIN 
-         Weeks w ON a.weekID = w.weekID
-     JOIN 
-         Courses c ON g.courseID = c.courseID
-    ) AS SourceTable
-PIVOT 
-    (MAX(status) 
-     FOR weekNumber IN ([1], [2], [3], [4], [5]) -- Liệt kê các tuần bạn cần pivot
-    ) AS PivotTable
-ORDER BY 
-    studentName;

@@ -31,6 +31,7 @@ namespace DAL.Repositories
                         c.courseID, 
                         c.courseName, 
                         c.courseCode,
+                        g.groupID,
                         g.groupName,
                         g.sessionTime,
                         u_teacher.userID,
@@ -68,6 +69,7 @@ namespace DAL.Repositories
                                 CourseID = Convert.ToInt32(reader["courseID"]),
                                 CourseName = reader["courseName"].ToString(),
                                 CourseCode = reader["courseCode"].ToString(),
+                                GroupID = Convert.ToInt32(reader["groupID"]),
                                 GroupName = reader["groupName"].ToString(),
                                 SessionTime = reader["sessionTime"].ToString(),
                                 TeacherID = Convert.ToInt32(reader["userID"]),
@@ -81,8 +83,7 @@ namespace DAL.Repositories
             }
             return courses;
         }
-        // Lấy toàn bộ tuần học của môn học
-        public List<WeekDTO> GetWeeks(int CourseID)
+        public List<WeekDTO> GetWeeks(int CourseID, int GroupID)
         {
             List<WeekDTO> weeks = new List<WeekDTO>();
             using (var conn = new SQLiteConnection(_connectionString))
@@ -93,9 +94,9 @@ namespace DAL.Repositories
                     cmd.CommandText = @"
                     SELECT 
                         w.weekID,
-	                    w.weekNumber,
-	                    w.startDate,
-	                    w.endDate
+                        w.weekNumber,
+                        w.startDate,
+                        w.endDate
                     FROM 
                         Courses c
                     JOIN 
@@ -104,8 +105,10 @@ namespace DAL.Repositories
                         Weeks w ON c.courseID = w.courseID
                     WHERE 
                         c.courseID = @CourseID
+                        AND w.groupID = @GroupID
                     ";
                     cmd.Parameters.AddWithValue("@CourseID", CourseID);
+                    cmd.Parameters.AddWithValue("@GroupID", GroupID);  
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -235,10 +238,10 @@ namespace DAL.Repositories
                     cmd.Parameters.AddWithValue("@CourseID", CourseID);
                     using (var reader = cmd.ExecuteReader())
                     {
-                        // Nếu status = "Có mặt " thì trả về true
+                        // Nếu status = 1 thì đã điểm danh
                         if (reader.Read())
                         {
-                            return reader["status"].ToString() == "Có mặt";
+                            return Convert.ToBoolean(reader["status"]);
                         }
                         else
                         {
@@ -247,6 +250,66 @@ namespace DAL.Repositories
                     }
                 }
             }
+        }
+        // Lấy danh sách điểm danh
+        public List<ListAttendancesDTO> GetListAttendances(int userID, int termID)
+        {
+            List<ListAttendancesDTO> listAttendances = new List<ListAttendancesDTO>();
+
+            using (var conn = new SQLiteConnection(_connectionString))
+            {
+                conn.Open();
+
+                using (var cmd = new SQLiteCommand(conn))
+                {
+                    cmd.CommandText = @"
+                        SELECT 
+                            c.CourseName AS CourseName,
+                            GROUP_CONCAT(a.CheckedInAt, char(10)) AS DateAbsence,  -- Liệt kê tất cả các ngày vắng mặt, dùng char(10) để xuống dòng
+                            IFNULL(COUNT(a.AttendanceID), 0) AS AbsenceCount  -- Số lượng vắng mặt, nếu không có thì bằng 0
+                        FROM 
+                            Courses c
+                        JOIN 
+                            Groups g ON c.CourseID = g.CourseID
+                        JOIN 
+                            Weeks w ON g.GroupID = w.GroupID
+                        JOIN 
+                            Enrollments e ON g.GroupID = e.GroupID
+                        JOIN 
+                            Users u ON e.StudentID = u.UserID
+                        LEFT JOIN  -- Dùng LEFT JOIN để hiển thị cả khi không có vắng mặt
+                            Attendances a ON a.StudentID = u.UserID 
+                                         AND a.WeekID = w.WeekID 
+                                         AND a.Status = 0  -- 0 là vắng mặt
+                        WHERE 
+                            u.UserID = @UserID
+                            AND c.TermID = @TermID
+                        GROUP BY 
+                            c.CourseName
+                        ORDER BY 
+                            c.CourseName;
+                    ";
+
+                    cmd.Parameters.AddWithValue("@UserID", userID);
+                    cmd.Parameters.AddWithValue("@TermID", termID);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var listAttendance = new ListAttendancesDTO
+                            {
+                                CourseName = reader["CourseName"].ToString(),
+                                DateAbsence = reader["DateAbsence"] != DBNull.Value ? reader["DateAbsence"].ToString() : string.Empty,
+                                AbsenceCount = reader["AbsenceCount"] != DBNull.Value ? Convert.ToInt32(reader["AbsenceCount"]) : 0
+                            };
+                            listAttendances.Add(listAttendance);
+                        }
+                    }
+                }
+            }
+
+            return listAttendances;
         }
     }
 }

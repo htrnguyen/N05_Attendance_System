@@ -96,7 +96,7 @@
             // 
             // pictureBoxDashboard
             // 
-            this.pictureBoxDashboard.Image = global::GUI.Properties.Resources.icons8_dashboard_layout_96;
+            this.pictureBoxDashboard.Image = global::GUI.Properties.Resources.icons8_home_page_64;
             this.pictureBoxDashboard.Location = new System.Drawing.Point(3, 1);
             this.pictureBoxDashboard.Name = "pictureBoxDashboard";
             this.pictureBoxDashboard.Size = new System.Drawing.Size(45, 44);
@@ -249,6 +249,7 @@
             this.lbLogout.TabIndex = 5;
             this.lbLogout.Text = "Đăng xuất";
             this.lbLogout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbLogout.Click += new System.EventHandler(this.lbLogout_Click);
             // 
             // flpDateTime
             // 

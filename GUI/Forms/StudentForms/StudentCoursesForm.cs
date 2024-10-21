@@ -60,7 +60,7 @@ namespace GUI.Forms.StudentForms
                     RowCount = 4,
                     Dock = DockStyle.Top,
                     AutoSize = true,
-                    Margin = new Padding(0, 0, 0, 15),
+                    Margin = new Padding(0, 0, 0, 15), 
                     BackColor = courseColors[i % courseColors.Length],
                     CellBorderStyle = TableLayoutPanelCellBorderStyle.None,
                     Tag = course // Thêm course vào Tag để lấy thông tin khi click vào course

@@ -1,4 +1,5 @@
 ﻿using DTO;
+using GUI.Forms.AdminForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,7 @@ namespace GUI.Forms.MainForm
         {
             ShowUserInfo();
             Showtime();
+            ShowForm(new AdminDataForm());
         }
         private void ShowUserInfo()
         {
@@ -35,6 +37,23 @@ namespace GUI.Forms.MainForm
         {
             CultureInfo viCulture = new CultureInfo("vi-VN");
             labelDateTime.Text = DateTime.Now.ToString("dddd, dd/MM/yyyy", viCulture);
+        }
+        public void ShowForm(Form form)
+        {
+            form.TopLevel = false;
+            form.AutoScroll = true;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(form);
+            form.Show();
+        }
+
+        private void lbLogout_Click(object sender, EventArgs e)
+        {
+            // Quay lại form đăng nhập
+            this.Hide();
+            MainForm mainForm = new MainForm();
+            mainForm.ShowDialog();
+            this.Close();
         }
     }
 }

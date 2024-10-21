@@ -22,9 +22,9 @@ namespace BLL.Services
             return _studentDAL.GetCourses(userID, termID);
         }
         // Lấy toàn bộ tuần học của môn học
-        public List<WeekDTO> GetWeeks(int CourseID)
+        public List<WeekDTO> GetWeeks(int CourseID, int GroupID)
         {
-            return _studentDAL.GetWeeks(CourseID);
+            return _studentDAL.GetWeeks(CourseID, GroupID);
         }
         // Lấy toàn bộ thông báo của tuần học
         public List<AnnouncementsDTO> GetAnnouncements(int WeekID)
@@ -40,6 +40,11 @@ namespace BLL.Services
         public bool CheckAttendance(int UserID, int WeekID, int CourseID)
         {
             return _studentDAL.CheckAttendance(UserID, WeekID, CourseID);
+        }
+        // Lấy danh sách điểm danh
+        public List<ListAttendancesDTO> GetListAttendances(int UserID, int WeekID)
+        {
+            return _studentDAL.GetListAttendances(UserID, WeekID);
         }
     }
 }

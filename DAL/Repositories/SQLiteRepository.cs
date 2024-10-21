@@ -149,7 +149,8 @@ namespace DAL
                     AttendanceID INTEGER PRIMARY KEY AUTOINCREMENT,
                     StudentID INTEGER,
                     WeekID INTEGER,
-                    Status TEXT NOT NULL CHECK (Status IN ('Có mặt', 'Vắng mặt')),
+                    GroupID INTEGER,
+                    Status BIT NOT NULL,
                     CheckedInAt DATETIME,
                     Latitude TEXT,
                     Longitude TEXT,
@@ -548,16 +549,17 @@ namespace DAL
                     {
                         var row = attendanceData[i];
                         command.CommandText = @"
-                            INSERT INTO Attendances (StudentID, WeekID, Status, CheckedInAt, Latitude, Longitude, IPAddress) 
-                            VALUES (@StudentID, @WeekID, @Status, @CheckedInAt, @Latitude, @Longitude, @IPAddress);
+                            INSERT INTO Attendances (StudentID, WeekID, GroupID, Status, CheckedInAt, Latitude, Longitude, IPAddress) 
+                            VALUES (@StudentID, @WeekID, @GroupID, @Status, @CheckedInAt, @Latitude, @Longitude, @IPAddress);
                         ";
                         command.Parameters.AddWithValue("@StudentID", row[1]);
                         command.Parameters.AddWithValue("@WeekID", row[2]);
-                        command.Parameters.AddWithValue("@Status", row[3]);
-                        command.Parameters.AddWithValue("@CheckedInAt", row[4]);
-                        command.Parameters.AddWithValue("@Latitude", row[5]);
-                        command.Parameters.AddWithValue("@Longitude", row[6]);
-                        command.Parameters.AddWithValue("@IPAddress", row[7]);
+                        command.Parameters.AddWithValue("@GroupID", row[3]);
+                        command.Parameters.AddWithValue("@Status", row[4]);
+                        command.Parameters.AddWithValue("@CheckedInAt", row[5]);
+                        command.Parameters.AddWithValue("@Latitude", row[6]);
+                        command.Parameters.AddWithValue("@Longitude", row[7]);
+                        command.Parameters.AddWithValue("@IPAddress", row[8]);
 
                         await command.ExecuteNonQueryAsync();
                         command.Parameters.Clear();
