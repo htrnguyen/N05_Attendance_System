@@ -170,13 +170,6 @@ namespace GUI.Forms.MainForm
                     // Người dùng đã chọn đường dẫn và tên file
                     string filePath = saveFileDialog.FileName;
 
-                    // Kiểm tra xem file có đang được sử dụng bởi một quá trình khác không
-                    if (IsFileInUse(filePath))
-                    {
-                        MessageBox.Show("File đang được mở trong một ứng dụng khác. Vui lòng đóng file và thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
                     ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
 
                     using (var package = new ExcelPackage())
@@ -238,22 +231,6 @@ namespace GUI.Forms.MainForm
                     //MessageBox.Show("Xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-        }
-        // Hàm kiểm tra file có đang được mở bởi một quá trình khác hay không
-        private bool IsFileInUse(string filePath)
-        {
-            try
-            {
-                using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.ReadWrite, FileShare.None))
-                {
-                    fs.Close();
-                }
-            }
-            catch (IOException)
-            {
-                return true;
-            }
-            return false;
         }
 
         private void lbAttendance_Click(object sender, EventArgs e)
