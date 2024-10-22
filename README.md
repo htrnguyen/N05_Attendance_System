@@ -20,7 +20,11 @@ N05 Attendance System là một ứng dụng quản lý điểm danh cho sinh vi
 
 ## Cơ sở dữ liệu
 
-Cơ sở dữ liệu của ứng dụng được lưu trữ trên Google Sheets. Bạn có thể xem và chỉnh sửa cơ sở dữ liệu tại đây: [Google Sheets Database](https://docs.google.com/spreadsheets/d/1bTyUFW5CplUfh_TW1dg6HEiZzwgQJgnzLMk8eUmk4-k/edit?usp=sharing)
+Cơ sở dữ liệu của ứng dụng được lưu trữ trên Google Sheets. Bạn có thể xem và chỉnh sửa cơ sở dữ liệu tại đây: [Google Sheets Database](https://docs.google.com/spreadsheets/d/1bTyUFW5CplUfh_TW1dg6HEiZzwgQJgnzLMk8eUmk4-k/edit?usp=sharing).
+
+Ngoài ra, bạn có thể tải về **file mẫu `QuanLyDiemDanh.xlsx`** để sử dụng làm database mẫu ban đầu. File này bao gồm các sheet như `Roles`, `Users`, `Terms`, `Courses`, và nhiều bảng khác chứa dữ liệu mẫu cho ứng dụng.
+
+-   Tải xuống file mẫu tại đây: [QuanLyDiemDanh.xlsx](./QuanLyDiemDanh.xlsx)
 
 ## Liên kết
 
