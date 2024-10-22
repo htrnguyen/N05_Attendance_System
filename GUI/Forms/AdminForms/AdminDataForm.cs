@@ -18,7 +18,7 @@ namespace GUI.Forms.AdminForms
         {
             InitializeComponent();
             this._adminService = new AdminService();
-        }
+        } 
 
         private void AdminDataForm_Load(object sender, EventArgs e)
         {
