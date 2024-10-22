@@ -254,53 +254,53 @@ namespace DAL.Repositories
             }
         }
         // Cập nhật lên Google Sheets
-            public async Task SyncAttendancesDataToGoogleSheet(GoogleSheetsRepository googleSheetsRepo)
+        public async Task SyncAttendancesDataToGoogleSheet(GoogleSheetsRepository googleSheetsRepo)
+        {
+            using (var connection = new SQLiteConnection(_connectionString))
             {
-                using (var connection = new SQLiteConnection(_connectionString))
+                await connection.OpenAsync();
+                var command = connection.CreateCommand();
+                command.CommandText = @"
+                    SELECT * FROM Attendances;
+                ";
+
+                var reader = await command.ExecuteReaderAsync();
+                var attendanceID = new List<int>();
+                var studentIDs = new List<int>();
+                var weekIDs = new List<int>();
+                var groupIDs = new List<int>();
+                var statuses = new List<int>();
+                var checkedInAts = new List<DateTime>();
+                var latitudes = new List<string>();
+                var longitudes = new List<string>();
+                var ipAddresses = new List<string>();
+
+                while (await reader.ReadAsync())
                 {
-                    await connection.OpenAsync();
-                    var command = connection.CreateCommand();
-                    command.CommandText = @"
-                        SELECT * FROM Attendances;
-                    ";
-
-                    var reader = await command.ExecuteReaderAsync();
-                    var attendanceID = new List<int>();
-                    var studentIDs = new List<int>();
-                    var weekIDs = new List<int>();
-                    var groupIDs = new List<int>();
-                    var statuses = new List<int>();
-                    var checkedInAts = new List<DateTime>();
-                    var latitudes = new List<string>();
-                    var longitudes = new List<string>();
-                    var ipAddresses = new List<string>();
-
-                    while (await reader.ReadAsync())
-                    {
-                        attendanceID.Add(Convert.ToInt32(reader["AttendanceID"]));
-                        studentIDs.Add(Convert.ToInt32(reader["StudentID"]));
-                        weekIDs.Add(Convert.ToInt32(reader["WeekID"]));
-                        groupIDs.Add(Convert.ToInt32(reader["GroupID"]));
-                        statuses.Add(Convert.ToInt32(reader["Status"]));
-                        checkedInAts.Add(Convert.ToDateTime(reader["CheckedInAt"]));
-                        latitudes.Add(reader["Latitude"].ToString());
-                        longitudes.Add(reader["Longitude"].ToString());
-                        ipAddresses.Add(reader["IpAddress"].ToString());
-                    }
-
-                    // Chuẩn bị danh sách giá trị để cập nhật hàng loạt
-                    var values = new List<IList<object>>();
-                    for (int i = 0; i < studentIDs.Count; i++)
-                    {
-                        // Định dạng lại thời gian trước khi thêm vào danh sách
-                        var formattedCheckedInAt = checkedInAts[i].ToString("yyyy-MM-dd HH:mm:ss");
-                        values.Add(new List<object> { attendanceID[i], studentIDs[i], weekIDs[i], groupIDs[i], statuses[i], formattedCheckedInAt, latitudes[i], longitudes[i], ipAddresses[i] });
-                    }
-
-                var range = $"Attendances!A2:I{studentIDs.Count + 1}";
-                    await googleSheetsRepo.UpdateToGoogleSheets(range, values);
+                    attendanceID.Add(Convert.ToInt32(reader["AttendanceID"]));
+                    studentIDs.Add(Convert.ToInt32(reader["StudentID"]));
+                    weekIDs.Add(Convert.ToInt32(reader["WeekID"]));
+                    groupIDs.Add(Convert.ToInt32(reader["GroupID"]));
+                    statuses.Add(Convert.ToInt32(reader["Status"]));
+                    checkedInAts.Add(Convert.ToDateTime(reader["CheckedInAt"]));
+                    latitudes.Add(reader["Latitude"].ToString());
+                    longitudes.Add(reader["Longitude"].ToString());
+                    ipAddresses.Add(reader["IpAddress"].ToString());
                 }
+
+                // Chuẩn bị danh sách giá trị để cập nhật hàng loạt
+                var values = new List<IList<object>>();
+                for (int i = 0; i < studentIDs.Count; i++)
+                {
+                    // Định dạng lại thời gian trước khi thêm vào danh sách
+                    var formattedCheckedInAt = checkedInAts[i].ToString("yyyy-MM-dd HH:mm:ss");
+                    values.Add(new List<object> { attendanceID[i], studentIDs[i], weekIDs[i], groupIDs[i], statuses[i], formattedCheckedInAt, latitudes[i], longitudes[i], ipAddresses[i] });
+                }
+
+            var range = $"Attendances!A2:I{studentIDs.Count + 1}";
+                await googleSheetsRepo.UpdateToGoogleSheets(range, values);
             }
+        }
         // Lấy IpAddress có tồn tại không
         public bool CheckIpAddress(string IPAddress, int WeekID, int CourseID, int TeacherID, int ClassID)
         {

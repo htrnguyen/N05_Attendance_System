@@ -122,6 +122,8 @@ namespace GUI.Forms.AuthenticationForms
 
             HideError();
             ShowError("Đang chuyển hướng đến trang đổi mật khẩu...");
+            // Chuyển hướng đến trang đổi mật khẩu
+            _mainForm.ShowForm(new ChangePasswordForm(_mainForm, email));
         }
         private void picbReceiveCode_Click(object sender, EventArgs e)
         {
@@ -147,6 +149,14 @@ namespace GUI.Forms.AuthenticationForms
             {
                 e.Handled = true;
             }
+        }
+
+        private void BackToLogin_Click(object sender, EventArgs e)
+        {
+            // Đóng Form quên mật khẩu và hiển thị Form đăng nhập
+            this.Close();
+            _mainForm.ShowForm(new LoginForm(_mainForm));
+
         }
     }
 }

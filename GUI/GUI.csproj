@@ -127,6 +127,12 @@
     <Compile Include="Forms\AdminForms\AdminDataForm.Designer.cs">
       <DependentUpon>AdminDataForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AdminForms\LoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdminForms\LoadingForm.Designer.cs">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AuthenticationForms\ChangePasswordDashBoardForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AdminForms\AdminDataForm.resx">
       <DependentUpon>AdminDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdminForms\LoadingForm.resx">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AuthenticationForms\ChangePasswordDashBoardForm.resx">
       <DependentUpon>ChangePasswordDashBoardForm.cs</DependentUpon>
@@ -324,6 +333,7 @@
     <None Include="Resources\icons8-reload-50.png" />
     <None Include="Resources\icons8-attendance-50.png" />
     <None Include="Resources\icons8-home-page-64.png" />
+    <None Include="Resources\icons8-upload-64.png" />
     <Content Include="Resources\images\loading1.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -28,29 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxDashboard = new System.Windows.Forms.PictureBox();
-            this.pictureBoxAvt = new System.Windows.Forms.PictureBox();
-            this.pictureBoxReload = new System.Windows.Forms.PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelDashboard = new System.Windows.Forms.Panel();
+            this.pictureBoxDashboard = new System.Windows.Forms.PictureBox();
             this.panelSpace = new System.Windows.Forms.Panel();
             this.lbDashboard = new System.Windows.Forms.Label();
-            this.panelChangePassword = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lbChangePassword = new System.Windows.Forms.Label();
+            this.panelUpload = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBoxUpload = new System.Windows.Forms.PictureBox();
+            this.labelUpload = new System.Windows.Forms.Label();
             this.panelLine2 = new System.Windows.Forms.Panel();
             this.panelLogout = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lbLogout = new System.Windows.Forms.Label();
             this.flpDateTime = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBoxReload = new System.Windows.Forms.PictureBox();
             this.labelDateTime = new System.Windows.Forms.Label();
             this.labelRole = new System.Windows.Forms.Label();
             this.labelFullName = new System.Windows.Forms.Label();
             this.panelInfo = new System.Windows.Forms.Panel();
             this.flowLayoutPanelUserInfo = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBoxAvt = new System.Windows.Forms.PictureBox();
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelLine1 = new System.Windows.Forms.Panel();
             this.panelLine = new System.Windows.Forms.Panel();
@@ -58,78 +58,27 @@
             this.hiddenLabel = new System.Windows.Forms.Label();
             this.tbHide = new System.Windows.Forms.TextBox();
             this.panelSidebar = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDashboard)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReload)).BeginInit();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.panelDashboard.SuspendLayout();
-            this.panelChangePassword.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDashboard)).BeginInit();
+            this.panelUpload.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpload)).BeginInit();
             this.panelLogout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.flpDateTime.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReload)).BeginInit();
             this.panelInfo.SuspendLayout();
             this.flowLayoutPanelUserInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvt)).BeginInit();
             this.panelSidebar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBoxLogo
-            // 
-            this.pictureBoxLogo.Image = global::GUI.Properties.Resources.TĐT_logo_removebg_preview;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(65, 41);
-            this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(170, 94);
-            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxLogo.TabIndex = 4;
-            this.pictureBoxLogo.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::GUI.Properties.Resources.icons8_change_50;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(45, 44);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBoxDashboard
-            // 
-            this.pictureBoxDashboard.Image = global::GUI.Properties.Resources.icons8_home_page_64;
-            this.pictureBoxDashboard.Location = new System.Drawing.Point(3, 1);
-            this.pictureBoxDashboard.Name = "pictureBoxDashboard";
-            this.pictureBoxDashboard.Size = new System.Drawing.Size(45, 44);
-            this.pictureBoxDashboard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxDashboard.TabIndex = 5;
-            this.pictureBoxDashboard.TabStop = false;
-            // 
-            // pictureBoxAvt
-            // 
-            this.pictureBoxAvt.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBoxAvt.Image = global::GUI.Properties.Resources.icons8_user_94;
-            this.pictureBoxAvt.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxAvt.Name = "pictureBoxAvt";
-            this.pictureBoxAvt.Size = new System.Drawing.Size(85, 84);
-            this.pictureBoxAvt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxAvt.TabIndex = 10;
-            this.pictureBoxAvt.TabStop = false;
-            // 
-            // pictureBoxReload
-            // 
-            this.pictureBoxReload.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxReload.Image = global::GUI.Properties.Resources.icons8_reset_50;
-            this.pictureBoxReload.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxReload.Name = "pictureBoxReload";
-            this.pictureBoxReload.Size = new System.Drawing.Size(39, 35);
-            this.pictureBoxReload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxReload.TabIndex = 17;
-            this.pictureBoxReload.TabStop = false;
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.panelDashboard);
-            this.flowLayoutPanel1.Controls.Add(this.panelChangePassword);
+            this.flowLayoutPanel1.Controls.Add(this.panelUpload);
             this.flowLayoutPanel1.Controls.Add(this.panelLine2);
             this.flowLayoutPanel1.Controls.Add(this.panelLogout);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -151,6 +100,16 @@
             this.panelDashboard.Size = new System.Drawing.Size(251, 64);
             this.panelDashboard.TabIndex = 6;
             // 
+            // pictureBoxDashboard
+            // 
+            this.pictureBoxDashboard.Image = global::GUI.Properties.Resources.icons8_home_page_64;
+            this.pictureBoxDashboard.Location = new System.Drawing.Point(3, 1);
+            this.pictureBoxDashboard.Name = "pictureBoxDashboard";
+            this.pictureBoxDashboard.Size = new System.Drawing.Size(45, 44);
+            this.pictureBoxDashboard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxDashboard.TabIndex = 5;
+            this.pictureBoxDashboard.TabStop = false;
+            // 
             // panelSpace
             // 
             this.panelSpace.Location = new System.Drawing.Point(3, 51);
@@ -169,36 +128,47 @@
             this.lbDashboard.Text = "Trang Chủ";
             this.lbDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panelChangePassword
+            // panelUpload
             // 
-            this.panelChangePassword.AutoSize = true;
-            this.panelChangePassword.Controls.Add(this.panel2);
-            this.panelChangePassword.Controls.Add(this.pictureBox2);
-            this.panelChangePassword.Controls.Add(this.lbChangePassword);
-            this.panelChangePassword.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelChangePassword.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelChangePassword.Location = new System.Drawing.Point(3, 73);
-            this.panelChangePassword.Name = "panelChangePassword";
-            this.panelChangePassword.Size = new System.Drawing.Size(251, 64);
-            this.panelChangePassword.TabIndex = 8;
+            this.panelUpload.AutoSize = true;
+            this.panelUpload.Controls.Add(this.panel4);
+            this.panelUpload.Controls.Add(this.pictureBoxUpload);
+            this.panelUpload.Controls.Add(this.labelUpload);
+            this.panelUpload.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panelUpload.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panelUpload.Location = new System.Drawing.Point(3, 73);
+            this.panelUpload.Name = "panelUpload";
+            this.panelUpload.Size = new System.Drawing.Size(251, 64);
+            this.panelUpload.TabIndex = 12;
             // 
-            // panel2
+            // panel4
             // 
-            this.panel2.Location = new System.Drawing.Point(3, 51);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(245, 10);
-            this.panel2.TabIndex = 14;
+            this.panel4.Location = new System.Drawing.Point(3, 51);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(245, 10);
+            this.panel4.TabIndex = 14;
             // 
-            // lbChangePassword
+            // pictureBoxUpload
             // 
-            this.lbChangePassword.AutoSize = true;
-            this.lbChangePassword.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.lbChangePassword.Location = new System.Drawing.Point(53, 1);
-            this.lbChangePassword.Name = "lbChangePassword";
-            this.lbChangePassword.Size = new System.Drawing.Size(189, 38);
-            this.lbChangePassword.TabIndex = 5;
-            this.lbChangePassword.Text = "Đổi mật khẩu";
-            this.lbChangePassword.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pictureBoxUpload.Image = global::GUI.Properties.Resources.icons8_upload_64;
+            this.pictureBoxUpload.Location = new System.Drawing.Point(3, 1);
+            this.pictureBoxUpload.Name = "pictureBoxUpload";
+            this.pictureBoxUpload.Size = new System.Drawing.Size(45, 44);
+            this.pictureBoxUpload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxUpload.TabIndex = 5;
+            this.pictureBoxUpload.TabStop = false;
+            // 
+            // labelUpload
+            // 
+            this.labelUpload.AutoSize = true;
+            this.labelUpload.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.labelUpload.Location = new System.Drawing.Point(53, 1);
+            this.labelUpload.Name = "labelUpload";
+            this.labelUpload.Size = new System.Drawing.Size(100, 38);
+            this.labelUpload.TabIndex = 5;
+            this.labelUpload.Text = "Tải lên";
+            this.labelUpload.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelUpload.Click += new System.EventHandler(this.labelUpload_Click);
             // 
             // panelLine2
             // 
@@ -261,6 +231,17 @@
             this.flpDateTime.Size = new System.Drawing.Size(372, 41);
             this.flpDateTime.TabIndex = 27;
             // 
+            // pictureBoxReload
+            // 
+            this.pictureBoxReload.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxReload.Image = global::GUI.Properties.Resources.icons8_reset_50;
+            this.pictureBoxReload.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxReload.Name = "pictureBoxReload";
+            this.pictureBoxReload.Size = new System.Drawing.Size(39, 35);
+            this.pictureBoxReload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxReload.TabIndex = 17;
+            this.pictureBoxReload.TabStop = false;
+            // 
             // labelDateTime
             // 
             this.labelDateTime.AutoSize = true;
@@ -314,6 +295,17 @@
             this.flowLayoutPanelUserInfo.Size = new System.Drawing.Size(208, 90);
             this.flowLayoutPanelUserInfo.TabIndex = 26;
             this.flowLayoutPanelUserInfo.WrapContents = false;
+            // 
+            // pictureBoxAvt
+            // 
+            this.pictureBoxAvt.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxAvt.Image = global::GUI.Properties.Resources.icons8_user_94;
+            this.pictureBoxAvt.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxAvt.Name = "pictureBoxAvt";
+            this.pictureBoxAvt.Size = new System.Drawing.Size(85, 84);
+            this.pictureBoxAvt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAvt.TabIndex = 10;
+            this.pictureBoxAvt.TabStop = false;
             // 
             // panelMain
             // 
@@ -381,6 +373,16 @@
             this.panelSidebar.Size = new System.Drawing.Size(300, 844);
             this.panelSidebar.TabIndex = 21;
             // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.Image = global::GUI.Properties.Resources.TĐT_logo_removebg_preview;
+            this.pictureBoxLogo.Location = new System.Drawing.Point(65, 41);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(170, 94);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLogo.TabIndex = 4;
+            this.pictureBoxLogo.TabStop = false;
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -395,33 +397,34 @@
             this.Controls.Add(this.labelTitle);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(42)))), ((int)(((byte)(122)))));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "`";
             this.Load += new System.EventHandler(this.AdminForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDashboard)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReload)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.panelDashboard.ResumeLayout(false);
             this.panelDashboard.PerformLayout();
-            this.panelChangePassword.ResumeLayout(false);
-            this.panelChangePassword.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDashboard)).EndInit();
+            this.panelUpload.ResumeLayout(false);
+            this.panelUpload.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpload)).EndInit();
             this.panelLogout.ResumeLayout(false);
             this.panelLogout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.flpDateTime.ResumeLayout(false);
             this.flpDateTime.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReload)).EndInit();
             this.panelInfo.ResumeLayout(false);
             this.panelInfo.PerformLayout();
             this.flowLayoutPanelUserInfo.ResumeLayout(false);
             this.flowLayoutPanelUserInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvt)).EndInit();
             this.panelSidebar.ResumeLayout(false);
             this.panelSidebar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,15 +433,12 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxLogo;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBoxDashboard;
         private System.Windows.Forms.PictureBox pictureBoxAvt;
         private System.Windows.Forms.PictureBox pictureBoxReload;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panelDashboard;
         private System.Windows.Forms.Label lbDashboard;
-        private System.Windows.Forms.Panel panelChangePassword;
-        private System.Windows.Forms.Label lbChangePassword;
         private System.Windows.Forms.Panel panelLine2;
         private System.Windows.Forms.Panel panelLogout;
         private System.Windows.Forms.PictureBox pictureBox3;
@@ -457,7 +457,10 @@
         private System.Windows.Forms.TextBox tbHide;
         private System.Windows.Forms.Panel panelSidebar;
         private System.Windows.Forms.Panel panelSpace;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panelUpload;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.PictureBox pictureBoxUpload;
+        private System.Windows.Forms.Label labelUpload;
     }
 }

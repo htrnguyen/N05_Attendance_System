@@ -95,13 +95,36 @@ namespace DAL
                 {
                     return await operation();
                 }
+                catch (Google.GoogleApiException googleEx)
+                {
+                    attempts++;
+                    Console.WriteLine($"Google API Exception trong lần thử thứ {attempts}: {googleEx.Message}");
+
+                    if (attempts >= maxAttempts)
+                    {
+                        Console.WriteLine($"Thất bại sau {attempts} lần thử.");
+                        throw new Exception($"Thất bại sau {attempts} lần thử", googleEx);
+                    }
+
+                    // Thêm thời gian chờ giữa các lần thử
+                    await Task.Delay(1000);
+                }
                 catch (Exception ex)
                 {
                     attempts++;
+                    Console.WriteLine($"Exception khác trong lần thử thứ {attempts}: {ex.Message}");
+
                     if (attempts >= maxAttempts)
+                    {
+                        Console.WriteLine($"Thất bại sau {attempts} lần thử.");
                         throw new Exception($"Thất bại sau {attempts} lần thử", ex);
+                    }
+
+                    // Thêm thời gian chờ giữa các lần thử
+                    await Task.Delay(1000);
                 }
             }
         }
+
     }
 }

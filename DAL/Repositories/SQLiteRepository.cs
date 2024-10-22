@@ -274,15 +274,23 @@ namespace DAL
                     for (int i = 1; i < userData.Count; i++)
                     {
                         var row = userData[i];
+
+                        // Kiểm tra số lượng cột trong hàng trước khi chèn
+                        if (row.Count < 6)
+                        {
+                            Console.WriteLine($"Dữ liệu không đủ cột tại hàng {i}: {string.Join(", ", row)}");
+                            continue; // Bỏ qua hàng không hợp lệ
+                        }
+
                         command.CommandText = @"
                             INSERT INTO Users (Username, Password, Email, FullName, RoleID) 
                             VALUES (@Username, @Password, @Email, @FullName, @RoleID);
                         ";
-                        command.Parameters.AddWithValue("@Username", row[1]);
-                        command.Parameters.AddWithValue("@Password", row[2]);
-                        command.Parameters.AddWithValue("@Email", row[3]);
-                        command.Parameters.AddWithValue("@FullName", row[4]);
-                        command.Parameters.AddWithValue("@RoleID", row[5]);
+                        command.Parameters.AddWithValue("@Username", row[1].ToString());
+                        command.Parameters.AddWithValue("@Password", row[2].ToString());
+                        command.Parameters.AddWithValue("@Email", row[3].ToString());
+                        command.Parameters.AddWithValue("@FullName", row[4].ToString());
+                        command.Parameters.AddWithValue("@RoleID", row[5].ToString());
 
                         await command.ExecuteNonQueryAsync();
                         command.Parameters.Clear();
@@ -292,6 +300,7 @@ namespace DAL
                 }
             }
         }
+
         // Chèn dữ liệu vào bảng Terms
         public async Task InsertTermData(IList<IList<object>> termData)
         {

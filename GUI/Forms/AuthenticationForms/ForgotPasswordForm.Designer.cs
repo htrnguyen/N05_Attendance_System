@@ -131,6 +131,7 @@
             this.BackToLogin.Size = new System.Drawing.Size(190, 27);
             this.BackToLogin.TabIndex = 55;
             this.BackToLogin.Text = "Quay lại Đăng nhập";
+            this.BackToLogin.Click += new System.EventHandler(this.BackToLogin_Click);
             // 
             // btnConfirm
             // 
