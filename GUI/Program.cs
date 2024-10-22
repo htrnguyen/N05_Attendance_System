@@ -20,7 +20,7 @@ namespace GUI
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.MainForm.MainForm());
+            Application.Run(new Forms.MainForm.MainForm()); 
         }
     }
 }
