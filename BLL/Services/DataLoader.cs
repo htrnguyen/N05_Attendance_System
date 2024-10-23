@@ -159,7 +159,6 @@ public class DataLoader
     }
 
     // Retry logic để thử lại các thao tác nếu gặp lỗi "database is locked"
-    // Retry logic để thử lại các thao tác nếu gặp lỗi "database is locked"
     public async Task ExecuteWithRetryAsync(Func<Task> action, int maxRetries = 3)
     {
         int retryCount = 0;

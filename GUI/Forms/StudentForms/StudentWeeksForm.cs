@@ -77,13 +77,13 @@ namespace GUI.Forms.StudentForms
                 //MessageBox.Show($"Tọa độ lớp học: {class_lat}, {class_lon}\nTọa độ nhận được: {received_lat}, {received_lon}");
 
                 // Kiểm tra tọa độ có nằm trong bán kính không
-                bool isInArea = IsPointInRadius(class_lat, class_lon, received_lat, received_lon, 10.0);
+                bool isInArea = IsPointInRadius(class_lat, class_lon, received_lat, received_lon, 5.0);
 
                 string IPAddress = GetIPAddress();
                 // Nếu Ip đã tồn tại thì không cho điểm danh
-                if (_attendanceService.CheckIpAddress(IPAddress, tempWeek, _course.CourseID, _course.TeacherID, _course.ClassID))
+                if (_attendanceService.CheckIpAddress(IPAddress, tempWeek, _course.CourseID))
                 {
-                    MessageBox.Show("Điểm danh thất bại.\nBạn đã điểm danh từ thiết bị khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Điểm danh thất bại.\nThiết bị này đã được dùng để điểm danh!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -247,7 +247,9 @@ namespace GUI.Forms.StudentForms
             double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
 
             double distance = earthRadius * c;
-            //MessageBox.Show($"Khoảng cách giữa 2 điểm là: {distance} mét");
+            int roundedDistance = (int)Math.Round(distance);
+            MessageBox.Show($"Khoảng cách giữa 2 điểm là: {roundedDistance} mét");
+
             return distance;
         }
         // Hàm kiểm tra xem tọa độ có nằm trong bán kính hay không

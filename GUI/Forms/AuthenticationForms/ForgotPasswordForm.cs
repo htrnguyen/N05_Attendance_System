@@ -127,6 +127,20 @@ namespace GUI.Forms.AuthenticationForms
         }
         private void picbReceiveCode_Click(object sender, EventArgs e)
         {
+            HideError();        
+            // Kiểm tra email có tồn tại không
+            if (string.IsNullOrWhiteSpace(tbEmail.Text))
+            {
+                ShowError("Email không được để trống");
+                return;
+            }
+
+            if (!_authService.IsEmailExist(tbEmail.Text))
+            {
+                ShowError("Email không tồn tại");
+                return;
+            }
+
             // Tắt nhấn nút gửi mã xác nhận
             picbReceiveCode.Enabled = false;
             lbNameReceiveCode.Enabled = false;

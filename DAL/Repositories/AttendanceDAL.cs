@@ -302,7 +302,8 @@ namespace DAL.Repositories
             }
         }
         // Lấy IpAddress có tồn tại không
-        public bool CheckIpAddress(string IPAddress, int WeekID, int CourseID, int TeacherID, int ClassID)
+        // Kiểm tra xem IP đã điểm danh cho tuần đó của môn đó chưa
+        public bool CheckIpAddress(string IPAddress, int WeekID, int CourseID)
         {
             using (var conn = new SQLiteConnection(_connectionString))
             {
@@ -310,28 +311,24 @@ namespace DAL.Repositories
                 using (var cmd = new SQLiteCommand(conn))
                 {
                     cmd.CommandText = @"
-                        SELECT COUNT(*)
-                        FROM Attendances A
-                        JOIN Weeks W ON A.WeekID = W.WeekID
-                        JOIN Groups G ON W.GroupID = G.GroupID
-                        JOIN Courses C ON G.CourseID = C.CourseID
-                        JOIN CourseAssignments CA ON C.CourseID = CA.CourseID
-                        WHERE A.IPAddress = @IPAddress 
-                        AND W.WeekID = @WeekID 
-                        AND C.CourseID = @CourseID
-                        AND CA.TeacherID = @TeacherID
-                        AND G.ClassID = @ClassID;
-                    ";
+                SELECT COUNT(*)
+                FROM Attendances A
+                JOIN Weeks W ON A.WeekID = W.WeekID
+                JOIN Groups G ON W.GroupID = G.GroupID
+                JOIN Courses C ON G.CourseID = C.CourseID
+                WHERE A.IPAddress = @IPAddress 
+                AND W.WeekID = @WeekID 
+                AND C.CourseID = @CourseID;
+            ";
                     cmd.Parameters.AddWithValue("@IPAddress", IPAddress);
                     cmd.Parameters.AddWithValue("@WeekID", WeekID);
                     cmd.Parameters.AddWithValue("@CourseID", CourseID);
-                    cmd.Parameters.AddWithValue("@TeacherID", TeacherID);
-                    cmd.Parameters.AddWithValue("@ClassID", ClassID);
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
                     return count > 0;
                 }
             }
         }
+
         // Lấy danh sách điểm danh
         public List<AttendanceDTO> GetAttendances(int teacherID, int courseID, int classID)
         {

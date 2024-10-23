@@ -45,7 +45,15 @@ namespace GUI.Forms.MainForm
         private void ShowUserInfo()
         {
             labelFullName.Text = _user.FullName;
-            labelRole.Text = _user.Role;
+            //labelRole.Text = _user.Role;
+            if (_user.Role == "Student")
+            {
+                labelRole.Text = "Sinh viên";
+            }
+            else if (_user.Role == "Teacher")
+            {
+                labelRole.Text = "Giáo viên";
+            }
         }
         // Hiển thị thời gian hiện tại  
         private void Showtime()
@@ -158,18 +166,15 @@ namespace GUI.Forms.MainForm
         }
         public void ExportAttendanceToExcel(Dictionary<string, List<AttendanceDTO>> attendanceDataByCourses)
         {
-            // Sử dụng SaveFileDialog để yêu cầu người dùng chọn đường dẫn và tên file
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
                 saveFileDialog.Filter = "Excel Files|*.xlsx";
                 saveFileDialog.Title = "Lưu báo cáo điểm danh";
-                saveFileDialog.FileName = "AttendanceReport.xlsx"; // Tên file mặc định
+                saveFileDialog.FileName = "Danh sách điểm danh.xlsx";
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    // Người dùng đã chọn đường dẫn và tên file
                     string filePath = saveFileDialog.FileName;
-
                     ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
 
                     using (var package = new ExcelPackage())
@@ -181,58 +186,86 @@ namespace GUI.Forms.MainForm
 
                             var worksheet = package.Workbook.Worksheets.Add(courseKey);
 
-                            // Tạo header cho sheet
+                            // Tạo header cho sheet và làm cho tiêu đề dễ nhìn hơn
                             worksheet.Cells[1, 1].Value = "Tên sinh viên";
-                            worksheet.Cells[1, 2].Value = "Tuần 1";
-                            worksheet.Cells[1, 3].Value = "Tuần 2";
-                            worksheet.Cells[1, 4].Value = "Tuần 3";
-                            worksheet.Cells[1, 5].Value = "Tuần 4";
-                            worksheet.Cells[1, 6].Value = "Tuần 5";
-                            worksheet.Cells[1, 7].Value = "Tuần 6";
-                            worksheet.Cells[1, 8].Value = "Tuần 7";
-                            worksheet.Cells[1, 9].Value = "Tuần 8";
-                            worksheet.Cells[1, 10].Value = "Tuần 9";
-                            worksheet.Cells[1, 11].Value = "Tuần 10";
-                            worksheet.Cells[1, 12].Value = "Tuần 11";
-                            worksheet.Cells[1, 13].Value = "Tuần 12";
-                            worksheet.Cells[1, 14].Value = "Tuần 13";
-                            worksheet.Cells[1, 15].Value = "Tuần 14";
-                            worksheet.Cells[1, 16].Value = "Tuần 15";
+                            for (int i = 1; i <= 15; i++)
+                            {
+                                worksheet.Cells[1, i + 1].Value = $"Tuần {i}";
+                            }
+                            worksheet.Cells[1, 17].Value = "Tổng số vắng";
 
-                            // Điền dữ liệu điểm danh vào sheet
+                            using (var headerRange = worksheet.Cells[1, 1, 1, 17])
+                            {
+                                headerRange.Style.Font.Bold = true;
+                                headerRange.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                                headerRange.Style.Fill.BackgroundColor.SetColor(Color.LightBlue);
+                                headerRange.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                                headerRange.Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+                                headerRange.Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                            }
+
                             int row = 2;
                             foreach (var attendance in attendanceList)
                             {
                                 worksheet.Cells[row, 1].Value = attendance.StudentName;
-                                worksheet.Cells[row, 2].Value = attendance.Week1;
-                                worksheet.Cells[row, 3].Value = attendance.Week2;
-                                worksheet.Cells[row, 4].Value = attendance.Week3;
-                                worksheet.Cells[row, 5].Value = attendance.Week4;
-                                worksheet.Cells[row, 6].Value = attendance.Week5;
-                                worksheet.Cells[row, 7].Value = attendance.Week6;
-                                worksheet.Cells[row, 8].Value = attendance.Week7;
-                                worksheet.Cells[row, 9].Value = attendance.Week8;
-                                worksheet.Cells[row, 10].Value = attendance.Week9;
-                                worksheet.Cells[row, 11].Value = attendance.Week10;
-                                worksheet.Cells[row, 12].Value = attendance.Week11;
-                                worksheet.Cells[row, 13].Value = attendance.Week12;
-                                worksheet.Cells[row, 14].Value = attendance.Week13;
-                                worksheet.Cells[row, 15].Value = attendance.Week14;
-                                worksheet.Cells[row, 16].Value = attendance.Week15;
+
+                                int totalAbsences = 0;
+
+                                for (int i = 1; i <= 15; i++)
+                                {
+                                    var weekValue = attendance.GetType().GetProperty($"Week{i}").GetValue(attendance);
+                                    int weekAttendance;
+
+                                    if (int.TryParse(weekValue?.ToString(), out weekAttendance))
+                                    {
+                                        string status = weekAttendance == 0 ? "Vắng" : "Có mặt";
+                                        worksheet.Cells[row, i + 1].Value = status;
+
+                                        // Tô vàng cho các ngày vắng
+                                        if (weekAttendance == 0)
+                                        {
+                                            worksheet.Cells[row, i + 1].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                                            worksheet.Cells[row, i + 1].Style.Fill.BackgroundColor.SetColor(Color.Yellow);
+                                            totalAbsences++;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        worksheet.Cells[row, i + 1].Value = "";
+                                    }
+                                }
+
+                                // Ghi tổng số lần vắng vào cột sau tuần 15
+                                worksheet.Cells[row, 17].Value = totalAbsences;
+
+                                // Nếu sinh viên vắng đủ 3 ngày trở lên thì tô đỏ cả hàng
+                                if (totalAbsences >= 3)
+                                {
+                                    worksheet.Cells[row, 1, row, 17].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                                    worksheet.Cells[row, 1, row, 17].Style.Fill.BackgroundColor.SetColor(Color.LightCoral);
+                                }
+
                                 row++;
+                            }
+
+                            // Cố định cột tên sinh viên và dòng tiêu đề
+                            worksheet.View.FreezePanes(2, 2);
+
+                            // Căn chỉnh format cho các ô
+                            using (var range = worksheet.Cells[1, 1, row - 1, 17])
+                            {
+                                range.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                                range.Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+                                range.AutoFitColumns(); // Tự động chỉnh độ rộng cột
                             }
                         }
 
-                        // Lưu file Excel ra đường dẫn filePath đã chọn
                         FileInfo file = new FileInfo(filePath);
                         package.SaveAs(file);
                     }
-
-                    //MessageBox.Show("Xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
-
         private void lbAttendance_Click(object sender, EventArgs e)
         {
             Console.WriteLine(_termID);

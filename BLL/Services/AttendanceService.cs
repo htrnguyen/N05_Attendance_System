@@ -60,9 +60,9 @@ namespace BLL.Services
             await _attendanceDAL.SyncAttendancesDataToGoogleSheet(_googleSheetsRepo);
         }
         // Kiểm tra IpAddress có tồn tại trong bảng điểm danh không
-        public bool CheckIpAddress(string IPAddress, int WeekID, int CourseID, int TeacherID, int ClassID)
+        public bool CheckIpAddress(string IPAddress, int WeekID, int CourseID)
         {
-            return _attendanceDAL.CheckIpAddress(IPAddress, WeekID, CourseID, TeacherID, ClassID);
+            return _attendanceDAL.CheckIpAddress(IPAddress, WeekID, CourseID);
         }
         // Lấy danh sách điểm danh
         public List<AttendanceDTO> GetAttendances(int teacherID, int courseID, int classID)
