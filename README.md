@@ -14,9 +14,10 @@ N05 Attendance System là một ứng dụng quản lý điểm danh cho sinh vi
 
 Để cài đặt ứng dụng, vui lòng làm theo các bước sau:
 
-1. Tải xuống tệp `setup.exe` hoặc `setup.msi` trong thư mục **Setup_N05** của repo này.
-2. Tạo một thư mục để chứa ứng dụng trước khi cài đặt.
-3. Chạy tệp cài đặt và làm theo hướng dẫn để hoàn tất quá trình cài đặt.
+1. Truy cập thư mục **Setup** trong repo này.
+2. Tải xuống tệp cài đặt **`setup.msi`** trong thư mục **Setup**.
+3. Chạy tệp **setup.msi** và làm theo hướng dẫn để hoàn tất quá trình cài đặt.
+4. Ứng dụng sẽ được cài đặt vào thư mục **C:\N05**.
 
 ## Cơ sở dữ liệu
 
