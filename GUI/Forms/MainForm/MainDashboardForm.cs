@@ -271,5 +271,10 @@ namespace GUI.Forms.MainForm
             Console.WriteLine(_termID);
             ShowForm(new StudentAttendanceForm(this, _user.UserID, _termID));
         }
+        // Cập nhật breadcrumb khi click vào course
+        public void UpdateBreadcrumb(string courseName)
+        {
+            lbBreadcrumb.Text = $"Trang Chủ {courseName}";
+        }
     }
 }

@@ -31,6 +31,7 @@ namespace GUI.Forms.TeacherForms
         {
             GetCourses();
             _mainDashboardForm.HideAttendanceButton();
+            _mainDashboardForm.UpdateBreadcrumb("");
         }
         public void GetCourses()
         {

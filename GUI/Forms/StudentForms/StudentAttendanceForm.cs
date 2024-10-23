@@ -31,6 +31,7 @@ namespace GUI.Forms.StudentForms
         private void StudentAttendanceForm_Load(object sender, EventArgs e)
         {
             ShowAttendanceList();
+            _mainDashboardForm.UpdateBreadcrumb("/ Điểm danh");
         }
         // Hiển thị danh sách điểm danh lên DataGridView
         private void ShowAttendanceList()

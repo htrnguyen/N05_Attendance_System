@@ -37,7 +37,7 @@ namespace BLL.Services
         // Xử lý gửi mã xác nhận
         public bool SendVerificationEmail(string recipientEmail, string verificationCode)
         {
-            var fromAddress = new MailAddress("hatrongnguyen04@gmail.com", "Hà Trọng Nguyễn");
+            var fromAddress = new MailAddress("techcraft.n05@gmail.com", "TechCraft N05");
             var toAddress = new MailAddress(recipientEmail);
             const string fromPassword = "vgws uaqj zgxj wywv";
             const string subject = "Mã xác nhận của bạn";

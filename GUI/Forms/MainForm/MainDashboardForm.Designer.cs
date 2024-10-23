@@ -56,7 +56,7 @@
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.panelLine1 = new System.Windows.Forms.Panel();
             this.cbbTerms = new System.Windows.Forms.ComboBox();
-            this.labelTitle = new System.Windows.Forms.Label();
+            this.lbBreadcrumb = new System.Windows.Forms.Label();
             this.panelLine = new System.Windows.Forms.Panel();
             this.panelMain = new System.Windows.Forms.Panel();
             this.flowLayoutPanelUserInfo = new System.Windows.Forms.FlowLayoutPanel();
@@ -373,16 +373,16 @@
             this.cbbTerms.TabIndex = 16;
             this.cbbTerms.SelectedIndexChanged += new System.EventHandler(this.cbbTerms_SelectedIndexChanged);
             // 
-            // labelTitle
+            // lbBreadcrumb
             // 
-            this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.Location = new System.Drawing.Point(353, 114);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(173, 45);
-            this.labelTitle.TabIndex = 14;
-            this.labelTitle.Text = "Trang Chủ";
-            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbBreadcrumb.AutoSize = true;
+            this.lbBreadcrumb.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBreadcrumb.Location = new System.Drawing.Point(353, 114);
+            this.lbBreadcrumb.Name = "lbBreadcrumb";
+            this.lbBreadcrumb.Size = new System.Drawing.Size(173, 45);
+            this.lbBreadcrumb.TabIndex = 14;
+            this.lbBreadcrumb.Text = "Trang Chủ";
+            this.lbBreadcrumb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panelLine
             // 
@@ -502,7 +502,7 @@
             this.Controls.Add(this.panelSidebar);
             this.Controls.Add(this.cbbTerms);
             this.Controls.Add(this.panelLine);
-            this.Controls.Add(this.labelTitle);
+            this.Controls.Add(this.lbBreadcrumb);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(42)))), ((int)(((byte)(122)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -554,7 +554,7 @@
         private System.Windows.Forms.Panel panelLine1;
         private System.Windows.Forms.PictureBox pictureBoxReload;
         private System.Windows.Forms.ComboBox cbbTerms;
-        private System.Windows.Forms.Label labelTitle;
+        private System.Windows.Forms.Label lbBreadcrumb;
         private System.Windows.Forms.Panel panelLine;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelUserInfo;

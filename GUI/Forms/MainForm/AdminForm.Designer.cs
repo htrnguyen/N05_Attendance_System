@@ -54,7 +54,7 @@
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelLine1 = new System.Windows.Forms.Panel();
             this.panelLine = new System.Windows.Forms.Panel();
-            this.labelTitle = new System.Windows.Forms.Label();
+            this.lbBreadcrumb = new System.Windows.Forms.Label();
             this.hiddenLabel = new System.Windows.Forms.Label();
             this.tbHide = new System.Windows.Forms.TextBox();
             this.panelSidebar = new System.Windows.Forms.Panel();
@@ -331,16 +331,16 @@
             this.panelLine.Size = new System.Drawing.Size(1543, 3);
             this.panelLine.TabIndex = 22;
             // 
-            // labelTitle
+            // lbBreadcrumb
             // 
-            this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.Location = new System.Drawing.Point(353, 115);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(173, 45);
-            this.labelTitle.TabIndex = 23;
-            this.labelTitle.Text = "Trang Chủ";
-            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbBreadcrumb.AutoSize = true;
+            this.lbBreadcrumb.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBreadcrumb.Location = new System.Drawing.Point(353, 115);
+            this.lbBreadcrumb.Name = "lbBreadcrumb";
+            this.lbBreadcrumb.Size = new System.Drawing.Size(173, 45);
+            this.lbBreadcrumb.TabIndex = 23;
+            this.lbBreadcrumb.Text = "Trang Chủ";
+            this.lbBreadcrumb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // hiddenLabel
             // 
@@ -394,7 +394,7 @@
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelSidebar);
             this.Controls.Add(this.panelLine);
-            this.Controls.Add(this.labelTitle);
+            this.Controls.Add(this.lbBreadcrumb);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(42)))), ((int)(((byte)(122)))));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -452,7 +452,7 @@
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panelLine1;
         private System.Windows.Forms.Panel panelLine;
-        private System.Windows.Forms.Label labelTitle;
+        private System.Windows.Forms.Label lbBreadcrumb;
         private System.Windows.Forms.Label hiddenLabel;
         private System.Windows.Forms.TextBox tbHide;
         private System.Windows.Forms.Panel panelSidebar;

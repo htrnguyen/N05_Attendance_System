@@ -30,6 +30,7 @@ namespace GUI.Forms.AuthenticationForms
         {
             tbNewPassword.Focus();
             HideError();
+            _mainDashboardForm.UpdateBreadcrumb("/ Đổi mật khẩu");
         }
 
         // Hiển thị thông báo lỗi

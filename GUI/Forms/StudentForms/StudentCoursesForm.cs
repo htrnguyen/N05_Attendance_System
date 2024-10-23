@@ -32,6 +32,7 @@ namespace GUI.Forms.StudentForms
         {
             GetCourses();
             _mainDashboardForm.HideDownloadButton();
+            _mainDashboardForm.UpdateBreadcrumb("");
         }
         public void GetCourses()
         {

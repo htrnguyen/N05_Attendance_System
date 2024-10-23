@@ -118,6 +118,8 @@ namespace GUI.Forms.StudentForms
         {
             GetWeeks();
             _mainDashboardForm.HideDownloadButton();
+            string courseName = "/ " + _course.CourseName + " - " + _course.CourseCode;
+            _mainDashboardForm.UpdateBreadcrumb(courseName);
         }
         // Lấy toàn bộ tuần học của môn học
         private void GetWeeks()
